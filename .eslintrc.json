@@ -26,6 +26,7 @@
         "react/jsx-props-no-spreading": "off",
         "no-underscore-dangle": "off",
         "jsx-a11y/label-has-associated-control": "off",
+        "jsx-a11y/no-redundant-roles": [ "error", { "nav": ["navigation"] } ],
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
             "jsx": "never",
