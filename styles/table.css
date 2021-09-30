@@ -1,0 +1,40 @@
+.dashboard-container .table-lists .table-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+}
+
+.dashboard-container .table-lists a:hover {
+  color: #0e0e0e;
+  background-color: #ffedcc;
+}
+
+.dashboard-container .table-lists .table-card .item-card {
+  width: 80px;
+  height: 80px;
+  margin: 3px;
+  border-radius: 1rem;
+  margin: 3px;
+}
+
+.item-card.available {
+  background-color: #d0d0d0;
+  text-align: center;
+  padding: 1.875rem;
+}
+
+.item-card.add {
+  border: 2px solid #d0d0d0;
+  padding: 0.72rem;
+}
+
+.dashboard-container span.table-details {
+  display: block;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container span.table-details {
+    float: right;
+  }
+}
