@@ -1,0 +1,26 @@
+.sidebar .content {
+  background: #ffffff;
+  width: 290px;
+  position: relative;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  overflow-y: auto;
+}
+
+.sidebar .content::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-footer .btn-sign-out {
+  background-color: rgb(255, 167, 0);
+  padding: 0.438rem;
+}
+
+@media (min-height: 900px) {
+  .sidebar .content {
+    overflow-y: hidden;
+  }
+}

@@ -61,7 +61,7 @@ const Home: NextPage = () => (
             />
           </div>
           <div className="button-group d-flex flex-column mx-auto pt-50">
-            <a className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" href="../src/dashboard/orders.html" role="button">Masuk</a>
+            <a className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" href="/cashier" role="button">Masuk</a>
             {/* <button
               type="submit"
               className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16"

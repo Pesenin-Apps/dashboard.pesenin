@@ -1,0 +1,27 @@
+.dashboard-container .order-lists .order-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+}
+
+.dashboard-container .order-lists .order-card .customer-name {
+  white-space: nowrap;
+  width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-container .order-lists .icon-status {
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  margin: 3.5px 0px 0px 0px;
+}
+
+.dashboard-container .order-lists .icon-status.process {
+  background-color: #efc050;
+}
+
+.dashboard-container .order-lists .icon-status.wait-payment {
+  background-color: #1abc9c;
+}
