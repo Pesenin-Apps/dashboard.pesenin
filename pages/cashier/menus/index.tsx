@@ -102,7 +102,7 @@ export default function Menus() {
                     <div className="col-2">
                       <div className="float-end">
                         <a
-                          href="./menus-create.html"
+                          href="/cashier/menus/create"
                           type="button"
                           className="btn btn-primary rounded-pill"
                         >
