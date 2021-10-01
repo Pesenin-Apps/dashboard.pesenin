@@ -32,7 +32,8 @@
             "jsx": "never",
             "ts": "never",
             "tsx": "never"
-        }]
+        }],
+        "jsx-a11y/img-redundant-alt": "off"
     },
     "settings": {
         "import/extensions": [
