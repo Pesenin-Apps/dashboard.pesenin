@@ -169,7 +169,7 @@ export default function Menus() {
                         </td>
                         <td>
                           <a
-                            href="./menus-detail.html"
+                            href="/cashier/menus/detail"
                             className="btn btn-primary rounded-pill text-sm"
                           >
                             Details
@@ -212,7 +212,7 @@ export default function Menus() {
                         </td>
                         <td>
                           <a
-                            href="./menus-detail.html"
+                            href="/cashier/menus/detail"
                             className="btn btn-primary rounded-pill text-sm"
                           >
                             Details

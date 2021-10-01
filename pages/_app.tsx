@@ -6,6 +6,7 @@ import '../styles/order.css';
 import '../styles/table.css';
 import '../styles/menu.css';
 import '../styles/menu-create.css';
+import '../styles/menu-detail.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 

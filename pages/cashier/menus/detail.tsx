@@ -1,4 +1,4 @@
-export default function Create() {
+export default function Detail() {
   return (
     <>
       <section className="dashboard-container overflow-auto">
@@ -85,11 +85,11 @@ export default function Create() {
               </a>
             </div>
 
-            <div className="menu-create mb-30">
+            <div className="menu-detail mb-30">
               <div className="container">
 
                 <div className="main-content main-content-card overflow-auto">
-                  <section className="create mx-auto">
+                  <section className="detail mx-auto">
                     <div className="mb-30">
                       <a href="/cashier/menus" className="btn-icon" role="button">
                         <svg
@@ -109,10 +109,28 @@ export default function Create() {
                     </div>
                     <div className="d-flex flex-row  align-items-center justify-content-between mb-30">
                       <div className="d-flex flex-row align-items-center">
-                        <div>
-                          <p className="fw-bold text-xl color-palette-0 mb-10">Tambah Menu baru</p>
-                          <p className="color-palette-5 m-0">Isi Data Yang Valid</p>
+                        <div className="pe-4">
+                          <div className="cropped">
+                            <img
+                              className="img-fluid"
+                              src="/images/placeholder-food.png"
+                              width={200}
+                              height={130}
+                              alt="Menu Image"
+                            />
+                          </div>
                         </div>
+                        <div>
+                          <p className="fw-bold text-xl color-palette-0 mb-10">
+                            Udang
+                            Kipas Asam Manis
+
+                          </p>
+                          <p className="color-palette-5 m-0">Udang</p>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="badge bg-success">Tersedia</span>
                       </div>
                     </div>
                     <hr />
@@ -139,6 +157,7 @@ export default function Create() {
                             name="name"
                             aria-describedby="name"
                             placeholder="Masukkan Nama Menu"
+                            value="Udang Kipas Asam Manis"
                           />
                         </div>
                         <div className="pb-20">
@@ -162,6 +181,7 @@ export default function Create() {
                             name="price"
                             aria-describedby="price"
                             placeholder="Masukkan Harga Menu"
+                            value="40000"
                           />
                         </div>
                         <div className="pb-20">
@@ -178,7 +198,7 @@ export default function Create() {
                             aria-label="category"
                             name="category"
                           >
-                            <option>--- Pilih Kategori---</option>
+                            <option>--- Pilih Kategori ---</option>
                             <option value="1">Lobster</option>
                             <option value="2">Kerang</option>
                             <option value="3">Ikan Bakar</option>
@@ -194,7 +214,7 @@ export default function Create() {
                             <option value="13">Minuman Dingin</option>
                             <option value="14">Juice</option>
                             <option value="15">Tambahan</option>
-                            <option value="16">udang</option>
+                            <option value="16" selected>udang</option>
                           </select>
                         </div>
                         <div className="pb-20">
@@ -216,14 +236,14 @@ export default function Create() {
                             aria-label="section"
                             name="section"
                           >
-                            <option>--- Pilih Section---</option>
+                            <option>--- Pilih Section ---</option>
                             <option value="1">Grill Cuisine</option>
                             <option value="2">Fried Cuisine</option>
                             <option value="3">Soup</option>
                             <option value="4">Vegetable</option>
                             <option value="5">Additional Menu</option>
                             <option value="6">Drink</option>
-                            <option value="7">Sauteed</option>
+                            <option value="7" selected>Sauteed</option>
                           </select>
                         </div>
                         <div className="pb-20">
@@ -238,16 +258,15 @@ export default function Create() {
                             >
                               *
                             </span>
-
                           </label>
                           <select
                             className="form-select rounded-pill text-lg"
                             aria-label="status"
                             name="status"
                           >
-                            <option>--- Pilih Status---</option>
+                            <option>--- Pilih Status ---</option>
                             <option value="1">Tidak Tersedia Saat Ini</option>
-                            <option value="2">Tersedia Saat Ini</option>
+                            <option value="2" selected>Tersedia Saat Ini</option>
                           </select>
                         </div>
                         <div className="pb-20">
@@ -255,9 +274,8 @@ export default function Create() {
                             htmlFor="image"
                             className="form-label text-lg fw-medium color-palette-0 mb-10"
                           >
-                            Gambar
-                            <span className="text-danger"> *</span>
-
+                            Ganti Gambar
+                            <span className="text-secondary">*</span>
                           </label>
                           <input
                             type="file"
@@ -275,7 +293,7 @@ export default function Create() {
                         className="btn btn-primary fw-medium text-white text-lg"
                         role="button"
                       >
-                        Tambah
+                        Simpan
                       </a>
                     </div>
                   </section>
