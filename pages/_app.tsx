@@ -9,6 +9,7 @@ import '../styles/menu-create.css';
 import '../styles/menu-detail.css';
 import '../styles/waiter.css';
 import '../styles/waiter-create.css';
+import '../styles/waiter-detail.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
