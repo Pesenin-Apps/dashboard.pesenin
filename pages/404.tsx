@@ -1,4 +1,15 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 export default function Custom404() {
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.back();
+    }, 2000);
+  }, []);
+
   return (
     <>
       <section className="not-found mx-auto pt-145 pb-md-212 pb-100">
@@ -31,7 +42,7 @@ export default function Custom404() {
             <h2 className="text-4xl fw-bold text-center color-palette-0 mb-10">Oops! Not Found</h2>
             <p className="text-lg text-center color-palette-0 m-0">
               Mohon maaf, Halaman yang anda kunjungi
-              <br />
+              <br className="d-sm-block d-none" />
               sudah tidak tersedia pada sistem kami.
             </p>
           </div>
