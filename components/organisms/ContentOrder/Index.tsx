@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from './CardItem';
 import ModalDetail from './ModalDetail';
 
 export default function ContentOrder() {
