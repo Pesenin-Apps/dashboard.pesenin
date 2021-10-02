@@ -1,0 +1,7 @@
+.dashboard-container .waiter-create .main-content-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+  /* max-width: 860px; */
+  max-width: 100%;
+}

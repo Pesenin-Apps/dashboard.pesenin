@@ -77,10 +77,10 @@ export default function Waiters() {
               <a href="/cashier/tables" className="btn btn-nav btn-status rounded-pill text-md">
                 MEJA
               </a>
-              <a href="/cashier/menus" className="btn btn-nav btn-status rounded-pill text-md btn-active">
+              <a href="/cashier/menus" className="btn btn-nav btn-status rounded-pill text-md">
                 DAFTAR MENU
               </a>
-              <a href="/cashier/waiters" className="btn btn-nav btn-status rounded-pill text-md">
+              <a href="/cashier/waiters" className="btn btn-nav btn-status rounded-pill text-md btn-active">
                 PELAYANAN
               </a>
             </div>
