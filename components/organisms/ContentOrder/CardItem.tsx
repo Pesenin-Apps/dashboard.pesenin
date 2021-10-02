@@ -6,13 +6,12 @@ interface CardProps {
   time: string;
   tableSection: string;
   tableNumber: string;
-  // eslint-disable-next-line react/require-default-props
   customerName?: string;
   paymentAmount: number;
   status: 'Sedang Diproses' | 'Menunggu Pembayaran'
 }
 
-export default function Card(props: CardProps) {
+export default function Card(props: Partial<CardProps>) {
   const {
     time, tableSection, tableNumber, customerName = '-', paymentAmount, status,
   } = props;
