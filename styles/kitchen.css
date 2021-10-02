@@ -1,0 +1,21 @@
+.dashboard-container .queue-lists .queue-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+}
+
+.dashboard-container .queue-lists table tbody tr td.menu {
+  text-align: left;
+}
+
+.dashboard-container .queue-lists table tbody tr td.qty {
+  text-align: center;
+}
+
+.dashboard-container .queue-lists table tbody tr td.table_number {
+  text-align: center;
+}
+
+.dashboard-container .queue-lists table tbody tr td.btn-action {
+  text-align: right;
+}

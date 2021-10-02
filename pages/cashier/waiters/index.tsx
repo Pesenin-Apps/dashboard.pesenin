@@ -93,7 +93,7 @@ export default function Waiters() {
                   <div className="row my-3">
                     <div className="col-10">
                       <input
-                        type="search"
+                        type="text"
                         className="form-control rounded-pill border border-2"
                         placeholder="Cari..."
                         id="search"
@@ -102,7 +102,7 @@ export default function Waiters() {
                     <div className="col-2">
                       <div className="float-end">
                         <a
-                          href="./waiters-create.html"
+                          href="/cashier/waiters/create"
                           type="button"
                           className="btn btn-primary rounded-pill"
                         >
@@ -151,7 +151,7 @@ export default function Waiters() {
                         </td>
                         <td>
                           <a
-                            href="./waiters-detail.html"
+                            href="/cashier/waiters/detail"
                             className="btn btn-primary rounded-pill text-sm"
                           >
                             Details
@@ -175,7 +175,7 @@ export default function Waiters() {
                         </td>
                         <td>
                           <a
-                            href="./waiters-detail.html"
+                            href="/cashier/waiters/detail"
                             className="btn btn-primary rounded-pill text-sm"
                           >
                             Details

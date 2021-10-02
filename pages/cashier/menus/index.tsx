@@ -93,7 +93,7 @@ export default function Menus() {
                   <div className="row my-3">
                     <div className="col-10">
                       <input
-                        type="search"
+                        type="text"
                         className="form-control rounded-pill border border-2"
                         placeholder="Cari..."
                         id="search"

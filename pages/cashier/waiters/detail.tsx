@@ -1,4 +1,4 @@
-export default function Waiters() {
+export default function Detail() {
   return (
     <>
       <section className="dashboard-container overflow-auto">
@@ -91,7 +91,7 @@ export default function Waiters() {
                 <div className="main-content main-content-card overflow-auto">
                   <section className="create mx-auto">
                     <div className="mb-30">
-                      <a href="./waiters.html" className="btn-icon" role="button">
+                      <a href="/cashier/waiters" className="btn-icon" role="button">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
