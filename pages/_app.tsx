@@ -7,6 +7,7 @@ import '../styles/table.css';
 import '../styles/menu.css';
 import '../styles/menu-create.css';
 import '../styles/menu-detail.css';
+import '../styles/waiter.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 

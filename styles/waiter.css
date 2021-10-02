@@ -1,0 +1,30 @@
+.dashboard-container .waiter-lists .main-content-table {
+  background-color: #ffffff;
+  padding: 1.25rem 1.875rem;
+  border-radius: 1rem;
+  /* max-width: 1047px; */
+  max-width: 100%;
+}
+
+.dashboard-container .table > :not(caption) > * > * {
+  padding: 10px 0px;
+}
+
+.dashboard-container .waiter-lists table thead tr th {
+  font-weight: 600;
+}
+
+.dashboard-container .waiter-lists .icon-status {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin: 7px 6px 0px 0px;
+}
+
+.dashboard-container .waiter-lists .icon-status.active {
+  background-color: #198754 !important;
+}
+
+.dashboard-container .waiter-lists .icon-status.not-active {
+  background-color: #dc3545 !important;
+}
