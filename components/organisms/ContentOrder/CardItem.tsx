@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import NumberFormat from 'react-number-format';
 
 interface CardProps {
   time: string;
@@ -54,9 +55,7 @@ export default function Card(props: Partial<CardProps>) {
               <p className="text-md color-palette-0 fw-medium m-0 customer-name">{customerName}</p>
               <p className="text-sm color-palette-5 mb-0 mt-1">Total Pembayaran</p>
               <p className="text-xl color-palette-0 fw-medium m-0">
-                Rp.
-                {' '}
-                {paymentAmount}
+                <NumberFormat value={paymentAmount} prefix="Rp. " displayType="text" thousandSeparator="." decimalSeparator="," />
               </p>
             </div>
           </div>
