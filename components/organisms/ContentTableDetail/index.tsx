@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Caption from './Caption';
+import QrCode from './QrCode';
 
 interface TableDetailContentProps {
   data: {
@@ -31,16 +32,12 @@ export default function TableDetailContent(props: TableDetailContentProps) {
             </div>
             <div className="row justify-content-center">
               <div className="col-4 text-center">
-                <Image src="/assets/qr-sample.svg" width={232} height={232} />
-                <div>
-                  <a className="btn btn-warning btn-sm rounded-pill">Cetak QR-Code</a>
-                </div>
+                <QrCode table={data._id} />
               </div>
               <div className="col-6 my-auto">
                 <Caption title="Kode Meja" content={data._id} />
                 <Caption title="Nomor Meja" content={data.number.toString()} />
                 <Caption title="Letak" content={data.section.name} />
-
                 <Caption title="Status" content={data.used === true ? 'Terisi' : 'Kosong (FREE)'} />
               </div>
               <div className="col-1" />
