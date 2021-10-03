@@ -1,0 +1,22 @@
+/* .menu-detail main .main-content{
+    max-width: 860px;
+} */
+
+.dashboard-container .table-detail .main-content-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+  /* max-width: 860px; */
+  max-width: 100%;
+}
+
+.dashboard-container span.table-details {
+  display: block;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container span.table-details {
+    float: right;
+  }
+}

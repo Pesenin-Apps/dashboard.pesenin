@@ -4,6 +4,7 @@ import '../styles/sidebar.css';
 import '../styles/dashboard-content.css';
 import '../styles/order.css';
 import '../styles/table.css';
+import '../styles/table-detail.css';
 import '../styles/menu.css';
 import '../styles/menu-create.css';
 import '../styles/menu-detail.css';

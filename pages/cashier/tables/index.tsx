@@ -1,6 +1,6 @@
-import ContentTable from '../../../components/organisms/ContentTable';
-import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
+import Navbar from '../../../components/organisms/Navbar';
+import ContentTable from '../../../components/organisms/ContentTable';
 
 export default function Tables() {
   return (

@@ -27,14 +27,3 @@
   border: 2px solid #d0d0d0;
   padding: 0.72rem;
 }
-
-.dashboard-container span.table-details {
-  display: block;
-  font-weight: 600;
-}
-
-@media (min-width: 768px) {
-  .dashboard-container span.table-details {
-    float: right;
-  }
-}

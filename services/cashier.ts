@@ -21,7 +21,14 @@ export async function getTableTableSection(id: string) {
   return axiosResponse.tableSection.tables;
 }
 
-export async function getTableDetail() {}
+export async function getTableDetail(id: string) {
+  const url = await axios.get(
+    // eslint-disable-next-line comma-dangle
+    `${ROOT_API}/${VERSION_API}/tables/${id}`
+  );
+  const axiosResponse = url.data;
+  return axiosResponse.table;
+}
 
 export async function getMenus() {
   return null;
