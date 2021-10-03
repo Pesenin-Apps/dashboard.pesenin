@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import User from './User';
+import Profile from './Profile';
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
           className="img-fluid mb-20"
         />
       </div>
-      <User name="Cashier Pesenin" email="cashier@pesenin.id" />
+      <Profile name="Cashier Pesenin" email="cashier@pesenin.id" />
     </div>
   );
 }
