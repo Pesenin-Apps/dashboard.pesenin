@@ -1,4 +1,4 @@
-import axios from 'axios';
+import callAPI from '../config/api';
 import { signInTypes } from './data-types';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
@@ -9,24 +9,10 @@ export async function signUp() {
 }
 
 export async function signIn(data: signInTypes) {
-  const response = await axios
-    .post(`${ROOT_API}/${VERSION_API}/auth/signin`, data)
-    .catch((error) => error.response);
-
-  if (response.status > 300) {
-    const res = {
-      error: true,
-      message: response.data.message,
-      data: null,
-    };
-    return res;
-  }
-
-  const res = {
-    error: false,
-    message: 'success',
-    data: response.data,
-  };
-
-  return res;
+  const url = `${ROOT_API}/${VERSION_API}/auth/signin`;
+  return callAPI({
+    url,
+    method: 'POST',
+    data,
+  });
 }
