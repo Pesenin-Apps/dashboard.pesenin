@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { signIn } from '../../../services/auth';
@@ -70,7 +69,6 @@ export default function Form() {
           <a className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" role="button">Masuk</a>
         </Link>
       </div>
-      <ToastContainer />
     </form>
   );
 }
