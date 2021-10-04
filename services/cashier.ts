@@ -30,6 +30,17 @@ export async function getTableDetail(id: string) {
   return axiosResponse.table;
 }
 
+export async function createTable(data) {
+  const url = await axios
+    .get(`${ROOT_API}/${VERSION_API}/tables`, data)
+    .catch((err) => err.response);
+  const axiosResponse = url.data;
+  if (axiosResponse?.error === 1) {
+    return axiosResponse;
+  }
+  return axiosResponse.table;
+}
+
 export async function getMenus() {
   return null;
 }

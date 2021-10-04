@@ -3,6 +3,7 @@ import CardItemAdd from './CardItemAdd';
 import CardItemAvailable from './CardItemAvailable';
 import { getTableTableSection } from '../../../services/cashier';
 import { TableTypes } from '../../../services/data-types';
+import ModalCreate from './ModalCreate';
 
 interface CardProps {
   title: string;
@@ -33,7 +34,8 @@ export default function Card(props: CardProps) {
           {tableTableSectionList.map((item: TableTypes) => (
             <CardItemAvailable key={item._id} id={item._id} tableNumber={item.number} />
           ))}
-          <CardItemAdd />
+          <CardItemAdd section={section} />
+          <ModalCreate section={section} />
         </div>
       </div>
     </div>
