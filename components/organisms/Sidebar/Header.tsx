@@ -14,7 +14,7 @@ export default function Header() {
     const token = Cookies.get('token');
     if (token) {
       const jwtToken = atob(token);
-      const payload: any = jwtDecode(jwtToken);
+      const payload: UserTypes = jwtDecode(jwtToken);
       const userFromPayload: UserTypes = payload;
       setUser(userFromPayload);
     }
