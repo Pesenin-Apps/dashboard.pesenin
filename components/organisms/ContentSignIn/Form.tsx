@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 import { signIn } from '../../../services/auth';
 
 export default function Form() {
@@ -22,6 +23,9 @@ export default function Form() {
       if (response.error) {
         toast.error(response.message);
       } else {
+        const { token } = response.data;
+        const tokenBase64 = btoa(token);
+        Cookies.set('token', tokenBase64);
         if (response.data.user.role === 'cashier') {
           toast.success('Sign In Berhasil');
           router.push('/cashier');
