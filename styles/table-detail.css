@@ -15,6 +15,10 @@
   font-weight: 600;
 }
 
+.btn.btn-icon {
+  box-shadow: none;
+}
+
 @media (min-width: 768px) {
   .dashboard-container span.table-details {
     float: right;

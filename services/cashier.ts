@@ -42,6 +42,15 @@ export async function setTable(data: FormData) {
   });
 }
 
+export async function deleteTable(id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/tables/${id}`;
+  return callAPI({
+    url,
+    method: 'DELETE',
+    token: true,
+  });
+}
+
 export async function getMenus() {
   return null;
 }
