@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import Profile from './Profile';
+import { UserTypes } from '../../../services/data-types';
 
 export default function Header() {
   const [user, setUser] = useState({
@@ -13,8 +14,9 @@ export default function Header() {
     const token = Cookies.get('token');
     if (token) {
       const jwtToken = atob(token);
-      const payload = jwtDecode(jwtToken);
-      setUser(payload);
+      const payload: any = jwtDecode(jwtToken);
+      const userFromPayload: UserTypes = payload;
+      setUser(userFromPayload);
     }
   }, []);
   return (

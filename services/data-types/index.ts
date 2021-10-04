@@ -15,3 +15,10 @@ export interface signInTypes {
   email: string;
   password: string;
 }
+
+export interface UserTypes {
+  _id: string;
+  fullname: string;
+  email: string;
+  role: string;
+}
