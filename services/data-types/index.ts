@@ -10,3 +10,8 @@ export interface TableTypes {
   number: number;
   used: boolean;
 }
+
+export interface signInTypes {
+  email: string;
+  password: string;
+}
