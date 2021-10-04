@@ -1,4 +1,6 @@
 import axios from 'axios';
+import callAPI from '../config/api';
+import { TableTypes } from './data-types';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
 const VERSION_API = 'api/v1';
@@ -30,15 +32,14 @@ export async function getTableDetail(id: string) {
   return axiosResponse.table;
 }
 
-export async function createTable(data) {
-  const url = await axios
-    .get(`${ROOT_API}/${VERSION_API}/tables`, data)
-    .catch((err) => err.response);
-  const axiosResponse = url.data;
-  if (axiosResponse?.error === 1) {
-    return axiosResponse;
-  }
-  return axiosResponse.table;
+export async function setTable(data: FormData) {
+  const url = `${ROOT_API}/${VERSION_API}/tables`;
+  return callAPI({
+    url,
+    method: 'POST',
+    data,
+    token: true,
+  });
 }
 
 export async function getMenus() {

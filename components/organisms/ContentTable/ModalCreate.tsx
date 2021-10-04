@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { createTable } from '../../../services/cashier';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import { setTable } from '../../../services/cashier';
 
 interface ModalCreateProps {
   section: string;
@@ -7,22 +9,20 @@ interface ModalCreateProps {
 
 export default function ModalCreate(props: ModalCreateProps) {
   const { section } = props;
+  const router = useRouter();
   const [number, setNumber] = useState('');
 
   const onSubmit = async () => {
     const data = new FormData();
     data.append('number', number);
     data.append('section', section);
-    const result = await createTable(data);
-    // if (result?.error === 1) {
-
-    // } else {
-
-    // }
-    console.log('number : ', number);
-    console.log('section : ', section);
-    console.log('data : ', data);
-    console.log('result : ', result);
+    const result = await setTable(data);
+    if (result.error) {
+      toast.error(result.message);
+    } else {
+      toast.success('Meja Berhasil Ditambah');
+      router.reload();
+    }
   };
 
   return (
@@ -31,7 +31,9 @@ export default function ModalCreate(props: ModalCreateProps) {
         <div className="modal-content">
 
           <div className="modal-header">
-            <h5 className="modal-title color-palette-0" id="modalTableCreateLabel">Tambah Meja</h5>
+            <h5 className="modal-title color-palette-0" id="modalTableCreateLabel">
+              Tambah Meja
+            </h5>
             <button
               type="button"
               className="btn-close"
