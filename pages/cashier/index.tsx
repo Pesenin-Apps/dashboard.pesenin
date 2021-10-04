@@ -18,7 +18,15 @@ export default function Cashier() {
   );
 }
 
-export async function getServerSideProps({ req }) {
+interface GetServerSideProps {
+  req: {
+    cookies: {
+      token: string;
+    };
+  };
+}
+
+export async function getServerSideProps({ req }: GetServerSideProps) {
   const { token } = req.cookies;
 
   if (!token) {
@@ -33,6 +41,15 @@ export async function getServerSideProps({ req }) {
   const jwtToken = Buffer.from(token, 'base64').toString('ascii');
   const payload: UserTypes = jwtDecode(jwtToken);
   const userFromPayload: UserTypes = payload;
+
+  if (userFromPayload.role !== 'cashier') {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
