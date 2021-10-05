@@ -6,6 +6,7 @@ import { signOut } from '../../../services/auth';
 
 export default function ButtonSignOut() {
   const router = useRouter();
+
   const onSignOut = async () => {
     Swal.fire({
       title: 'Anda yakin ingin Keluar?',

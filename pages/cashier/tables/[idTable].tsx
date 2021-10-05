@@ -1,11 +1,11 @@
-// import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
 import ContentTableDetail from '../../../components/organisms/ContentTableDetail';
 import { getTableDetail } from '../../../services/cashier';
-// import { UserTypes } from '../../../services/data-types';
+import { UserTypes } from '../../../services/data-types';
 
 export default function TableDetail() {
   const { query, isReady } = useRouter();
@@ -42,46 +42,40 @@ export default function TableDetail() {
   );
 }
 
-// interface GetServerSideProps {
-//   req: {
-//     cookies: {
-//       token: string;
-//     };
-//   };
-// }
+interface GetServerSideProps {
+  req: {
+    cookies: {
+      token: string;
+    };
+  };
+}
 
-// export async function getServerSideProps({ req, params }: GetServerSideProps) {
-//   const { token } = req.cookies;
-//   const { idTable } = params;
+export async function getServerSideProps({ req }: GetServerSideProps) {
+  const { token } = req.cookies;
 
-//   if (!token) {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
-//   const jwtToken = Buffer.from(token, 'base64').toString('ascii');
-//   const payload: UserTypes = jwtDecode(jwtToken);
-//   const userFromPayload: UserTypes = payload;
+  const jwtToken = Buffer.from(token, 'base64').toString('ascii');
+  const payload: UserTypes = jwtDecode(jwtToken);
+  const userFromPayload: UserTypes = payload;
 
-//   if (userFromPayload.role !== 'cashier') {
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (userFromPayload.role !== 'cashier') {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
-//   const response = await getTableDetail(idTable);
-//   console.log(response);
-
-//   return {
-//     props: {
-//       user: userFromPayload,
-//     },
-//   };
-// }
+  return {
+    props: {},
+  };
+}
