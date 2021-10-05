@@ -1,11 +1,20 @@
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import { signOut } from '../../../services/auth';
 
 export default function ButtonSignOut() {
   const router = useRouter();
-  const onSignOut = () => {
-    Cookies.remove('token');
-    router.push('/');
+  const onSignOut = async () => {
+    const response = await signOut();
+    console.log(response);
+    if (response.error) {
+      toast.error(response.message);
+    } else {
+      Cookies.remove('token');
+      toast.success('Sign Out, Berhasil!');
+      router.push('/');
+    }
   };
 
   return (

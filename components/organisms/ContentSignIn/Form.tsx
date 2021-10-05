@@ -26,10 +26,10 @@ export default function Form() {
         const tokenBase64 = btoa(token);
         Cookies.set('token', tokenBase64);
         if (response.data.user.role === 'cashier') {
-          toast.success('Sign In Berhasil');
+          toast.success('Sign In, Berhasil!');
           router.push('/cashier');
         } else if (response.data.user.role === 'kitchen') {
-          toast.success('Sign In Berhasil');
+          toast.success('Sign In, Berhasil!');
           router.push('/kitchen');
         } else {
           toast.error('Anda Tidak Berhak Masuk');
@@ -65,9 +65,6 @@ export default function Form() {
         <button type="button" className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" onClick={onSubmit}>
           Masuk
         </button>
-        <Link href="/cashier">
-          <a className="btn btn-sign-in fw-medium text-lg text-white rounded-pill mb-16" role="button">Masuk</a>
-        </Link>
       </div>
     </form>
   );

@@ -16,3 +16,12 @@ export async function signIn(data: signInTypes) {
     data,
   });
 }
+
+export async function signOut() {
+  const url = `${ROOT_API}/${VERSION_API}/auth/signout`;
+  return callAPI({
+    url,
+    method: 'POST',
+    token: true,
+  });
+}
