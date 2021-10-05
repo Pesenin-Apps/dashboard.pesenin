@@ -13,6 +13,7 @@ export default function ButtonSignOut() {
       showCancelButton: true,
       confirmButtonColor: '#ffa700',
       confirmButtonText: 'Ya, Keluar!',
+      cancelButtonText: 'Batal',
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await signOut();

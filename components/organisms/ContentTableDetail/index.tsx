@@ -30,6 +30,7 @@ export default function TableDetailContent(props: TableDetailContentProps) {
       showCancelButton: true,
       confirmButtonColor: '#d33',
       confirmButtonText: 'Ya, hapus!',
+      cancelButtonText: 'Batal',
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await deleteTable(data._id);
