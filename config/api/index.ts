@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 interface CallAPIProps extends AxiosRequestConfig {
   token?: boolean;
   serverToken?: string;
+  params?: object;
 }
 
 export default async function callAPI({
@@ -12,6 +13,7 @@ export default async function callAPI({
   data,
   token,
   serverToken,
+  params,
 }: CallAPIProps) {
   let headers = {};
 
@@ -34,6 +36,7 @@ export default async function callAPI({
     method,
     data,
     headers,
+    params,
   }).catch((error) => error.response);
 
   if (response.status > 300) {

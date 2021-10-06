@@ -51,6 +51,12 @@ export async function deleteTable(id: string) {
   });
 }
 
-export async function getMenus() {
-  return null;
+export async function getMenus(params: object) {
+  const url = `${ROOT_API}/${VERSION_API}/products`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+    params,
+  });
 }
