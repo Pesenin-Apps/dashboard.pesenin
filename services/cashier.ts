@@ -1,6 +1,6 @@
 import axios from 'axios';
 import callAPI from '../config/api';
-import { TableTypes } from './data-types';
+import { MenuTypes, TableTypes } from './data-types';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
 const VERSION_API = 'api/v1';
@@ -51,6 +51,7 @@ export async function deleteTable(id: string) {
   });
 }
 
+// Menu
 export async function getMenus(params: object) {
   const url = `${ROOT_API}/${VERSION_API}/products`;
   return callAPI({
@@ -58,5 +59,35 @@ export async function getMenus(params: object) {
     method: 'GET',
     token: true,
     params,
+  });
+}
+
+export async function setMenus(data: FormData) {
+  const url = `${ROOT_API}/${VERSION_API}/products`;
+  return callAPI({
+    url,
+    method: 'POST',
+    token: true,
+    data,
+  });
+}
+
+// Menu Category
+export async function getMenuCategories() {
+  const url = `${ROOT_API}/${VERSION_API}/products/categories`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
+}
+
+// Menu Type
+export async function getMenuTypes() {
+  const url = `${ROOT_API}/${VERSION_API}/products/types`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
   });
 }
