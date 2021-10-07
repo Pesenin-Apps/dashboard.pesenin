@@ -137,4 +137,14 @@ export async function getUsers(params: object) {
   });
 }
 
+export async function setUser(data: FormData) {
+  const url = `${ROOT_API}/${VERSION_API}/users`;
+  return callAPI({
+    url,
+    method: 'POST',
+    token: true,
+    data,
+  });
+}
+
 /* ========= END USER ========= */

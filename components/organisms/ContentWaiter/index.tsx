@@ -52,7 +52,7 @@ export default function ContentWaiter() {
             </div>
             <div className="col-2">
               <div className="float-end">
-                <Link href="/cashier/menus/create">
+                <Link href="/cashier/waiters/create">
                   <a className="btn btn-primary rounded-pill">
                     <Image src="/assets/icons/add-white.svg" width={11} height={11} />
                     {' '}
