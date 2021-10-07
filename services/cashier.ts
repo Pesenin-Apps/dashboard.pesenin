@@ -1,35 +1,35 @@
-import axios from 'axios';
 import callAPI from '../config/api';
-import { MenuTypes, TableTypes } from './data-types';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
 const VERSION_API = 'api/v1';
 
+/* ========= START TABLE ========= */
+
 export async function getTableSection() {
-  const url = await axios.get(
-    // eslint-disable-next-line comma-dangle
-    `${ROOT_API}/${VERSION_API}/tables/sections`
-  );
-  const axiosResponse = url.data;
-  return axiosResponse.tableSections;
+  const url = `${ROOT_API}/${VERSION_API}/tables/sections`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
 }
 
 export async function getTableTableSection(id: string) {
-  const url = await axios.get(
-    // eslint-disable-next-line comma-dangle
-    `${ROOT_API}/${VERSION_API}/tables/sections/${id}`
-  );
-  const axiosResponse = url.data;
-  return axiosResponse.tableSection.tables;
+  const url = `${ROOT_API}/${VERSION_API}/tables/sections/${id}`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
 }
 
 export async function getTableDetail(id: string) {
-  const url = await axios.get(
-    // eslint-disable-next-line comma-dangle
-    `${ROOT_API}/${VERSION_API}/tables/${id}`
-  );
-  const axiosResponse = url.data;
-  return axiosResponse.table;
+  const url = `${ROOT_API}/${VERSION_API}/tables/${id}`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
 }
 
 export async function setTable(data: FormData) {
@@ -51,7 +51,10 @@ export async function deleteTable(id: string) {
   });
 }
 
-// Menu
+/* ========= END TABLE ========= */
+
+/* ========= START MENU ========= */
+
 export async function getMenus(params: object) {
   const url = `${ROOT_API}/${VERSION_API}/products`;
   return callAPI({
@@ -119,3 +122,5 @@ export async function getMenuTypes() {
     token: true,
   });
 }
+
+/* ========= END MENU ========= */

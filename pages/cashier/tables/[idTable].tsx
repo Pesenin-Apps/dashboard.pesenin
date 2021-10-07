@@ -21,7 +21,7 @@ export default function TableDetail() {
 
   const getTableDetailAPI = useCallback(async (id) => {
     const data = await getTableDetail(id);
-    setDataItem(data);
+    setDataItem(data.data.data);
   }, []);
 
   useEffect(() => {

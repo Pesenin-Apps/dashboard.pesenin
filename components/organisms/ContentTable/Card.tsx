@@ -17,7 +17,7 @@ export default function Card(props: CardProps) {
   const getTableTableSectionList = useCallback(
     async () => {
       const data = await getTableTableSection(section);
-      setTableTableSection(data);
+      setTableTableSection(data.data.data.tables);
     },
     [getTableTableSection],
   );

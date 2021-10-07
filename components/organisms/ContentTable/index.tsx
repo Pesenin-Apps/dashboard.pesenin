@@ -9,7 +9,7 @@ export default function ContentTable() {
   const getTableSectionList = useCallback(
     async () => {
       const data = await getTableSection();
-      setTableSection(data);
+      setTableSection(data.data.data);
     },
     [getTableSection],
   );
