@@ -31,7 +31,7 @@ export default function Form() {
           toast.success('Sign In, Berhasil!');
           router.push('/kitchen');
         } else {
-          toast.error('Anda Tidak Berhak Masuk');
+          toast.error('Anda Tidak Berhak Masuk!');
         }
         console.log(response);
       }

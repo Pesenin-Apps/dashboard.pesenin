@@ -20,6 +20,7 @@ export default async function callAPI({
   if (serverToken) {
     headers = {
       Authorization: `Bearer ${serverToken}`,
+      Accept: 'application/json',
     };
   } else if (token) {
     const tokenCookies = Cookies.get('token');
@@ -27,6 +28,7 @@ export default async function callAPI({
       const jwtToken = atob(tokenCookies);
       headers = {
         Authorization: `Bearer ${jwtToken}`,
+        Accept: 'application/json',
       };
     }
   }

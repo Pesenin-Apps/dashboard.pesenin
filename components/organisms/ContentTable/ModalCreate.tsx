@@ -20,7 +20,7 @@ export default function ModalCreate(props: ModalCreateProps) {
     if (result.error) {
       toast.error(result.message);
     } else {
-      toast.success('Meja Berhasil Ditambah');
+      toast.success('Berhasil, meja telah Ditambahkan!');
       router.reload();
     }
   };

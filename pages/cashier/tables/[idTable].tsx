@@ -29,6 +29,7 @@ export default function TableDetail() {
       getTableDetailAPI(query.idTable);
     }
   }, [isReady]);
+
   return (
     <section className="dashboard-container overflow-auto">
       <Sidebar />

@@ -55,7 +55,7 @@ export default function ContentMenuCreate() {
       if (result.error) {
         toast.error(result.message);
       } else {
-        toast.success('Menu Berhasil Ditambahkan');
+        toast.success('Berhasil, menu telah ditambahkan!');
         router.push('/cashier/menus');
       }
     }
@@ -67,12 +67,16 @@ export default function ContentMenuCreate() {
 
         <div className="main-content main-content-card overflow-auto">
           <section className="create mx-auto">
-            <div className="mb-20">
-              <Link href="/cashier/menus">
-                <a className="btn-icon" role="button">
-                  <Image src="/assets/icons/arrow-left.svg" width={24} height={24} />
-                </a>
-              </Link>
+            <div className="mb-10">
+              <div className="clearfix">
+                <div className="float-start">
+                  <Link href="/cashier/menus">
+                    <a className="btn-icon" role="button">
+                      <Image src="/assets/icons/arrow-left.svg" width={24} height={24} />
+                    </a>
+                  </Link>
+                </div>
+              </div>
             </div>
             <div className="d-flex flex-row  align-items-center justify-content-between mb-30">
               <div className="d-flex flex-row align-items-center">

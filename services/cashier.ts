@@ -72,6 +72,34 @@ export async function setMenus(data: FormData) {
   });
 }
 
+export async function getMenu(id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/products/${id}`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
+}
+
+export async function updateMenu(data: FormData, id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/products/${id}`;
+  return callAPI({
+    url,
+    method: 'PATCH',
+    token: true,
+    data,
+  });
+}
+
+export async function deleteMenu(id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/products/${id}`;
+  return callAPI({
+    url,
+    method: 'DELETE',
+    token: true,
+  });
+}
+
 // Menu Category
 export async function getMenuCategories() {
   const url = `${ROOT_API}/${VERSION_API}/products/categories`;
