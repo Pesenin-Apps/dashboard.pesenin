@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { deleteTable } from '../../../services/cashier';
+import NavButtonDetail from '../../molecules/NavButtonDetail';
 import Caption from './Caption';
 import QrCode from './QrCode';
 
@@ -47,25 +46,9 @@ export default function TableDetailContent(props: TableDetailContentProps) {
   return (
     <div className="table-detail mb-30">
       <div className="container">
-
         <div className="main-content main-content-card overflow-auto">
           <section className="detail mx-auto">
-            <div className="mb-10">
-              <div className="clearfix">
-                <div className="float-start">
-                  <Link href="/cashier/tables">
-                    <a className="btn-icon" role="button">
-                      <Image src="/assets/icons/arrow-left.svg" width={24} height={24} />
-                    </a>
-                  </Link>
-                </div>
-                <div className="float-end">
-                  <button type="button" className="btn btn-icon" onClick={onDestroy}>
-                    <Image src="/assets/icons/trash.svg" width={24} height={24} />
-                  </button>
-                </div>
-              </div>
-            </div>
+            <NavButtonDetail hrefBack="/cashier/tables" onClickTrash={onDestroy} />
             <div className="row justify-content-center">
               <div className="col-4 text-center">
                 <QrCode table={data._id} />
@@ -80,7 +63,6 @@ export default function TableDetailContent(props: TableDetailContentProps) {
             </div>
           </section>
         </div>
-
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getMenuCategories, getMenuTypes, setMenus } from '../../../services/cashier';
 import { MenuCategoryTypes, MenuTypeTypes } from '../../../services/data-types';
+import NavButtonCreate from '../../molecules/NavButtonCreate';
 
 export default function ContentMenuCreate() {
   const [name, setName] = useState('');
@@ -67,18 +66,8 @@ export default function ContentMenuCreate() {
 
         <div className="main-content main-content-card overflow-auto">
           <section className="create mx-auto">
-            <div className="mb-10">
-              <div className="clearfix">
-                <div className="float-start">
-                  <Link href="/cashier/menus">
-                    <a className="btn-icon" role="button">
-                      <Image src="/assets/icons/arrow-left.svg" width={24} height={24} />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="d-flex flex-row  align-items-center justify-content-between mb-30">
+            <NavButtonCreate hrefBack="/cashier/menus" />
+            <div className="d-flex flex-row  align-items-center justify-content-between mt-10 mb-30">
               <div className="d-flex flex-row align-items-center">
                 <div>
                   <p className="fw-bold text-xl color-palette-0 mb-10">Tambah Menu baru</p>
