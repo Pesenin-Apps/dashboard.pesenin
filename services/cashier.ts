@@ -124,3 +124,17 @@ export async function getMenuTypes() {
 }
 
 /* ========= END MENU ========= */
+
+/* ========= START USER ========= */
+
+export async function getUsers(params: object) {
+  const url = `${ROOT_API}/${VERSION_API}/users`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+    params,
+  });
+}
+
+/* ========= END USER ========= */

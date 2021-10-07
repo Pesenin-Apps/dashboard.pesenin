@@ -44,4 +44,5 @@ export interface UserTypes {
   fullname: string;
   email: string;
   role: string;
+  createdAt: string;
 }

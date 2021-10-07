@@ -1,39 +1,40 @@
-import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getMenus } from '../../../services/cashier';
-import { MenuTypes } from '../../../services/data-types';
-import TableRow from './TableRow';
+import { useCallback, useEffect, useState } from 'react';
+import { getUsers } from '../../../services/cashier';
+import { UserTypes } from '../../../services/data-types';
 import ButtonPagination from '../../atoms/ButtonPagination';
+import TableRow from './TableRow';
 
-export default function ContentMenu() {
-  const [menus, setMenus] = useState([]);
+export default function ContentWaiter() {
+  const [waiters, setWaiters] = useState([]);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
-  const [countItem, setcountItem] = useState(0);
-  const [currentPage, setcurrentPage] = useState(0);
+  const [countItem, setCountItem] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
 
   const params = {
     search,
     limit: 10,
     page,
+    role: 'waiter',
   };
 
-  const getMenusAPI = useCallback(async (value) => {
-    const response = await getMenus(value);
-    setMenus(response.data.data);
-    setcountItem(response.data.count);
-    setcurrentPage(response.data.pageCurrent);
+  const getWaiterAPI = useCallback(async (value) => {
+    const response = await getUsers(value);
+    setWaiters(response.data.data);
+    setCountItem(response.data.count);
+    setCurrentPage(response.data.pageCurrent);
     setLastPage(response.data.pageMaximum);
-  }, [getMenus]);
+  }, [getUsers]);
 
   useEffect(() => {
-    getMenusAPI(params);
+    getWaiterAPI(params);
   }, [page, search]);
 
   return (
-    <div className="menu-lists mb-30">
+    <div className="waiter-lists mb-30">
       <div className="container">
         <div className="main-content main-content-table overflow-auto">
 
@@ -42,7 +43,7 @@ export default function ContentMenu() {
               <input
                 type="text"
                 className="form-control rounded-pill border border-2"
-                placeholder="Cari Menu..."
+                placeholder="Cari Pelayanan..."
                 onChange={(e) => {
                   setSearch(e.target.value);
                   setPage(1);
@@ -66,25 +67,23 @@ export default function ContentMenu() {
             <thead>
               <tr className="color-palette-0">
                 <th className="" scope="col">Nama</th>
-                <th scope="col">Section</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Status</th>
+                <th scope="col">Email</th>
+                <th scope="col">Terdaftar Sejak</th>
                 <th scope="col">Opsi</th>
               </tr>
             </thead>
             <tbody>
-              {menus.map((menu: MenuTypes) => (
+
+              {waiters.map((waiter: UserTypes) => (
                 <TableRow
-                  key={menu._id}
-                  image={menu.image_url}
-                  name={menu.name}
-                  type={menu.type.name}
-                  category={menu.category.name}
-                  price={menu.price}
-                  isReady={menu.is_ready}
-                  _id={menu._id}
+                  key={waiter._id}
+                  _id={waiter._id}
+                  fullname={waiter.fullname}
+                  email={waiter.email}
+                  since={waiter.createdAt}
                 />
               ))}
+
             </tbody>
           </table>
 
@@ -111,7 +110,6 @@ export default function ContentMenu() {
           </nav>
 
         </div>
-
       </div>
     </div>
   );
