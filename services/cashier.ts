@@ -137,6 +137,15 @@ export async function getUsers(params: object) {
   });
 }
 
+export async function getUser(id: string, token: string) {
+  const url = `${ROOT_API}/${VERSION_API}/users/${id}`;
+  return callAPI({
+    url,
+    method: 'GET',
+    serverToken: token,
+  });
+}
+
 export async function setUser(data: FormData) {
   const url = `${ROOT_API}/${VERSION_API}/users`;
   return callAPI({
@@ -144,6 +153,25 @@ export async function setUser(data: FormData) {
     method: 'POST',
     token: true,
     data,
+  });
+}
+
+export async function updateUser(data: FormData, id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/users/${id}`;
+  return callAPI({
+    url,
+    method: 'PATCH',
+    token: true,
+    data,
+  });
+}
+
+export async function deleteUser(id: string) {
+  const url = `${ROOT_API}/${VERSION_API}/users/${id}`;
+  return callAPI({
+    url,
+    method: 'DELETE',
+    token: true,
   });
 }
 
