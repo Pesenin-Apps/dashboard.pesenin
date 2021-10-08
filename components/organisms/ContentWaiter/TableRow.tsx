@@ -22,7 +22,7 @@ export default function TableRow(props: TableRowProps) {
         <p className="fw-medium color-palette-0 m-0">{email}</p>
       </td>
       <td>
-        <p className="fw-medium color-palette-0 m-0">{convertDate(since)}</p>
+        <p className="fw-medium color-palette-0 m-0">{convertDate(since, 'dd')}</p>
       </td>
       <td>
         <Link href={`/cashier/waiters/${_id}`}>
