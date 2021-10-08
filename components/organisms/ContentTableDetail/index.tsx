@@ -9,6 +9,7 @@ import QrCode from './QrCode';
 interface TableDetailContentProps {
   data: {
     _id: string;
+    name: string;
     number: number;
     section: {
       name: string;
@@ -54,7 +55,7 @@ export default function TableDetailContent(props: TableDetailContentProps) {
                 <QrCode table={data._id} />
               </div>
               <div className="col-6 my-auto">
-                <Caption title="Kode Meja" content={data._id} />
+                <Caption title="Kode Meja" content={data.name} />
                 <Caption title="Nomor Meja" content={data.number.toString()} />
                 <Caption title="Letak" content={data.section.name} />
                 <Caption title="Status" content={data.used === true ? 'Terisi' : 'Kosong (FREE)'} />
