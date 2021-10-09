@@ -18,7 +18,7 @@ export default function ContentHistory() {
     limit: 12,
     page,
     filters: {
-      status: [3, 4, 5],
+      status: [4, 5, 6],
     },
   };
 

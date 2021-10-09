@@ -55,6 +55,7 @@ export default function ContentOrderDetail(props: ContentOrderDetailProps) {
                 <tbody>
                   {data.order_items.map((item: OrderItemTypes) => (
                     <TableRow
+                      key={item._id}
                       id={item._id}
                       productName={item.product.name}
                       quantity={item.qty}
