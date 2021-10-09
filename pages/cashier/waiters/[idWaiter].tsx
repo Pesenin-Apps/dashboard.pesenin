@@ -13,7 +13,6 @@ interface DetailProps {
 
 export default function Detail(props: DetailProps) {
   const { user, counting, waiterDetail } = props;
-
   return (
     <section className="dashboard-container overflow-auto">
       <Sidebar userData={user} countData={counting} />

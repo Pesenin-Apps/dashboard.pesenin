@@ -4,12 +4,17 @@ import { useRouter } from 'next/router';
 import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
 import ContentTableDetail from '../../../components/organisms/ContentTableDetail';
-import { getTableDetail } from '../../../services/cashier';
-import { UserTypes } from '../../../services/data-types';
+import { getOrdersCount, getTableDetail } from '../../../services/cashier';
+import { CountOrderTypes, UserTypes } from '../../../services/data-types';
 
-export default function TableDetail() {
+interface TableDetailProps {
+  user: UserTypes;
+  counting: CountOrderTypes;
+}
+
+export default function TableDetail(props: TableDetailProps) {
+  const { user, counting } = props;
   const { query, isReady } = useRouter();
-
   const [dataItem, setDataItem] = useState({
     _id: '',
     name: '',
@@ -35,7 +40,7 @@ export default function TableDetail() {
 
   return (
     <section className="dashboard-container overflow-auto">
-      <Sidebar />
+      <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
           <Navbar activeMenu="tables" />
@@ -79,7 +84,12 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
     };
   }
 
+  const countOrders = await getOrdersCount(jwtToken);
+
   return {
-    props: {},
+    props: {
+      user: userFromPayload,
+      counting: countOrders.data.data,
+    },
   };
 }
