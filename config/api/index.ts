@@ -1,10 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import Cookies from 'js-cookie';
+import qs from 'qs';
 
 interface CallAPIProps extends AxiosRequestConfig {
   token?: boolean;
   serverToken?: string;
   params?: object;
+  ps?: boolean;
 }
 
 export default async function callAPI({
@@ -14,8 +16,10 @@ export default async function callAPI({
   token,
   serverToken,
   params,
+  ps,
 }: CallAPIProps) {
   let headers = {};
+  let paramsSerializer;
 
   if (serverToken) {
     headers = {
@@ -33,12 +37,19 @@ export default async function callAPI({
     }
   }
 
+  const psFunc = (paramsQuery: any) => qs.stringify(paramsQuery);
+
+  if (ps) {
+    paramsSerializer = psFunc;
+  }
+
   const response = await axios({
     url,
     method,
     data,
     headers,
     params,
+    paramsSerializer,
   }).catch((error) => error.response);
 
   if (response.status > 300) {

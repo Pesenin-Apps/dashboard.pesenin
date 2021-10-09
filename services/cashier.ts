@@ -176,3 +176,18 @@ export async function deleteUser(id: string) {
 }
 
 /* ========= END USER ========= */
+
+/* ========= START ORDERS ========= */
+
+export async function getOrders(params: object, ps: true) {
+  const url = `${ROOT_API}/${VERSION_API}/orders`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+    params,
+    ps,
+  });
+}
+
+/* ========= END ORDERS ========= */

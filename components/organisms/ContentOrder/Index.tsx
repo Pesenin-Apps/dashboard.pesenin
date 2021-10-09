@@ -1,17 +1,37 @@
+import { useCallback, useEffect, useState } from 'react';
+import convertDate from '../../../config/convertdate';
+import { getOrders } from '../../../services/cashier';
+import { OrderTypes } from '../../../services/data-types';
 import Card from './CardItem';
 import ModalDetail from './ModalDetail';
 
 export default function ContentOrder() {
+  const [orders, setOrders] = useState([]);
+
+  const params = {
+    filters: {
+      status: [2, 3],
+    },
+  };
+
+  const getOrderAPI = useCallback(async (value) => {
+    const response = await getOrders(value, true);
+    setOrders(response.data.data);
+  }, [getOrders]);
+
+  useEffect(() => {
+    getOrderAPI(params);
+  }, []);
+
   return (
     <div className="order-lists mb-30">
 
       <div className="container">
         <div className="row">
 
-          <Card time="2021-09-07 04:38:19" tableSection="Lesehan" tableNumber="3" customerName="Tiyan Attirmidzi" paymentAmount={280500} status="Sedang Diproses" />
-          <Card time="2021-09-07 04:38:19" tableSection="Lesehan" tableNumber="3" customerName="Tiyan Attirmidzi" paymentAmount={280500} status="Menunggu Pembayaran" />
-          <Card time="2021-09-07 04:38:19" tableSection="Lesehan" tableNumber="3" paymentAmount={280500} status="Menunggu Pembayaran" />
-          <Card time="2021-09-10 21:43:23" tableSection="Emperan" tableNumber="13" customerName="Muhammad Primus" paymentAmount={512320} status="Menunggu Pembayaran" />
+          {orders.map((order: OrderTypes) => (
+            <Card time={convertDate(order.createdAt, 'dt')} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
+          ))}
 
         </div>
       </div>

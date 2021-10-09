@@ -32,6 +32,7 @@ export interface TableTypes {
   name: string;
   number: number;
   used: boolean;
+  section: TableSectionTypes;
 }
 
 export interface signInTypes {
@@ -46,4 +47,27 @@ export interface UserTypes {
   role: string;
   password: string;
   createdAt: string;
+}
+
+export interface CustomerTypes {
+  _id: string;
+  name: string;
+  // eslint-disable-next-line camelcase
+  device_detection: string;
+  // eslint-disable-next-line camelcase
+  checkin_number: string;
+  status: number;
+}
+
+export interface OrderTypes {
+  _id: string;
+  table: TableTypes;
+  createdAt: string;
+  customer: CustomerTypes;
+  // eslint-disable-next-line camelcase
+  total_price: number;
+  tax: number;
+  // eslint-disable-next-line camelcase
+  total_overall: number;
+  status: number;
 }

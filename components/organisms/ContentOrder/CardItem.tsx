@@ -7,14 +7,14 @@ interface CardProps {
   time: string;
   tableSection: string;
   tableNumber: string;
-  customerName?: string;
+  customerName: string;
   paymentAmount: number;
   status: 'Sedang Diproses' | 'Menunggu Pembayaran'
 }
 
 export default function Card(props: Partial<CardProps>) {
   const {
-    time, tableSection, tableNumber, customerName = '-', paymentAmount, status,
+    time, tableSection, tableNumber, customerName, paymentAmount, status,
   } = props;
 
   const statusClass = cx({
