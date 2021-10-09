@@ -179,6 +179,15 @@ export async function deleteUser(id: string) {
 
 /* ========= START ORDERS ========= */
 
+export async function getOrdersCount(token: string) {
+  const url = `${ROOT_API}/${VERSION_API}/orders/count`;
+  return callAPI({
+    url,
+    method: 'GET',
+    serverToken: token,
+  });
+}
+
 export async function getOrders(params: object, ps: true) {
   const url = `${ROOT_API}/${VERSION_API}/orders`;
   return callAPI({

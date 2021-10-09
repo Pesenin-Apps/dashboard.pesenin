@@ -2,18 +2,20 @@ import jwtDecode from 'jwt-decode';
 import ContentOrderDetail from '../../../components/organisms/ContentOrderDetail';
 import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
-import { getOrder } from '../../../services/cashier';
-import { OrderTypes, UserTypes } from '../../../services/data-types';
+import { getOrder, getOrdersCount } from '../../../services/cashier';
+import { CountOrderTypes, OrderTypes, UserTypes } from '../../../services/data-types';
 
 interface OrderDetailProps {
+  user: UserTypes;
+  counting: CountOrderTypes;
   orderDetail: OrderTypes;
 }
 
 export default function OrderDetail(props: OrderDetailProps) {
-  const { orderDetail } = props;
+  const { user, counting, orderDetail } = props;
   return (
     <section className="dashboard-container overflow-auto">
-      <Sidebar />
+      <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
           <Navbar activeMenu="orders" />
@@ -61,11 +63,14 @@ export async function getServerSideProps({ req, params }: GetServerSideProps) {
     };
   }
 
-  const response = await getOrder(idOrder, jwtToken);
+  const getOrderDetail = await getOrder(idOrder, jwtToken);
+  const countOrders = await getOrdersCount(jwtToken);
 
   return {
     props: {
-      orderDetail: response.data.data,
+      user: userFromPayload,
+      counting: countOrders.data.data,
+      orderDetail: getOrderDetail.data.data,
     },
   };
 }

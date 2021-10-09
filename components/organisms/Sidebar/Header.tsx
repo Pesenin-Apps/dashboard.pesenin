@@ -1,24 +1,13 @@
 import Image from 'next/image';
-import Cookies from 'js-cookie';
-import jwtDecode from 'jwt-decode';
-import { useEffect, useState } from 'react';
 import Profile from './Profile';
-import { UserTypes } from '../../../services/data-types';
 
-export default function Header() {
-  const [user, setUser] = useState({
-    email: '',
-    fullname: '',
-  });
-  useEffect(() => {
-    const token = Cookies.get('token');
-    if (token) {
-      const jwtToken = atob(token);
-      const payload: UserTypes = jwtDecode(jwtToken);
-      const userFromPayload: UserTypes = payload;
-      setUser(userFromPayload);
-    }
-  }, []);
+interface HeaderProps {
+  name: string;
+  email: string;
+}
+
+export default function Header(props: HeaderProps) {
+  const { name, email } = props;
   return (
     <div className="text-center pb-50 pe-30">
       <div className="mb-20">
@@ -29,7 +18,7 @@ export default function Header() {
           className="img-fluid mb-20"
         />
       </div>
-      <Profile name={user.fullname} email={user.email} />
+      <Profile name={name} email={email} />
     </div>
   );
 }

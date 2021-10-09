@@ -91,3 +91,9 @@ export interface OrderTypes {
   order_items: [OrderItemTypes];
   waiter: WaiterTypes;
 }
+
+export interface CountOrderTypes {
+  all: number;
+  processed: number;
+  finished: number;
+}
