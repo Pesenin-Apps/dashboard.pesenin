@@ -88,7 +88,7 @@ export default function ContentMenu() {
             </tbody>
           </table>
 
-          <div className="d-flex justify-content-between mt-4">
+          <div className="d-flex justify-content-between mt-5">
             <div className="mt-2">
               <div className="text-sam text-secondary">
                 Jumlah data

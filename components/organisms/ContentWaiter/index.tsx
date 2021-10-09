@@ -87,27 +87,32 @@ export default function ContentWaiter() {
             </tbody>
           </table>
 
-          <div className="text-sm text-secondary">
-            Halaman
-            {' '}
-            {currentPage}
-            {' '}
-            dari
-            {' '}
-            {lastPage}
+          <div className="d-flex justify-content-between mt-5">
+            <div className="mt-2">
+              <div className="text-sam text-secondary">
+                Jumlah data
+                {' '}
+                {countItem}
+              </div>
+            </div>
+            <nav aria-label="Pagination Histories">
+              <ul className="pagination justify-content-center">
+                <ButtonPagination disabled={page === 1} onClick={() => setPage(page - 1)} text="Sebelumnya" />
+                <ButtonPagination disabled={lastPage <= page} onClick={() => setPage(page + 1)} text="Selanjutnya" />
+              </ul>
+            </nav>
+            <div className="mt-2">
+              <div className="text-sm text-secondary">
+                Halaman
+                {' '}
+                {currentPage}
+                {' '}
+                dari
+                {' '}
+                {lastPage}
+              </div>
+            </div>
           </div>
-          <div className="text-sm text-secondary">
-            Jumlah data
-            {' '}
-            {countItem}
-          </div>
-
-          <nav aria-label="Pagination Menus">
-            <ul className="pagination justify-content-center">
-              <ButtonPagination disabled={page === 1} onClick={() => setPage(page - 1)} text="Sebelumnya" />
-              <ButtonPagination disabled={lastPage <= page} onClick={() => setPage(page + 1)} text="Selanjutnya" />
-            </ul>
-          </nav>
 
         </div>
       </div>
