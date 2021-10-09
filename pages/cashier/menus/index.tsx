@@ -2,12 +2,19 @@ import jwtDecode from 'jwt-decode';
 import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
 import ContentMenu from '../../../components/organisms/ContentMenu';
-import { UserTypes } from '../../../services/data-types';
+import { CountOrderTypes, UserTypes } from '../../../services/data-types';
+import { getOrdersCount } from '../../../services/cashier';
 
-export default function Menus() {
+interface MenusProps {
+  user: UserTypes;
+  counting: CountOrderTypes;
+}
+
+export default function Menus(props: MenusProps) {
+  const { user, counting } = props;
   return (
     <section className="dashboard-container overflow-auto">
-      <Sidebar />
+      <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
           <Navbar activeMenu="menus" />
@@ -50,7 +57,13 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
       },
     };
   }
+
+  const countOrders = await getOrdersCount(jwtToken);
+
   return {
-    props: {},
+    props: {
+      user: userFromPayload,
+      counting: countOrders.data.data,
+    },
   };
 }
