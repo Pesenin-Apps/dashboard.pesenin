@@ -1,0 +1,24 @@
+.dashboard-container .history-lists .order-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+}
+
+.dashboard-container .history-lists .order-card .customer-name {
+  white-space: nowrap;
+  width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-container .history-lists .search-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.dashboard-container .history-lists .pagination-card {
+  background-color: #ffffff;
+  padding: 1rem 1rem 0rem 1rem;
+  border-radius: 1rem;
+}

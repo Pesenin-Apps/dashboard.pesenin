@@ -87,7 +87,7 @@ export default function ContentWaiter() {
             </tbody>
           </table>
 
-          <div className="text-sam text-secondary">
+          <div className="text-sm text-secondary">
             Halaman
             {' '}
             {currentPage}
@@ -96,7 +96,7 @@ export default function ContentWaiter() {
             {' '}
             {lastPage}
           </div>
-          <div className="text-sam text-secondary">
+          <div className="text-sm text-secondary">
             Jumlah data
             {' '}
             {countItem}

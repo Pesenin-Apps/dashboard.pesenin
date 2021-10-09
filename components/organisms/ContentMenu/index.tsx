@@ -88,7 +88,7 @@ export default function ContentMenu() {
             </tbody>
           </table>
 
-          <div className="text-sam text-secondary">
+          <div className="text-sm text-secondary">
             Halaman
             {' '}
             {currentPage}
@@ -97,7 +97,7 @@ export default function ContentMenu() {
             {' '}
             {lastPage}
           </div>
-          <div className="text-sam text-secondary">
+          <div className="text-sm text-secondary">
             Jumlah data
             {' '}
             {countItem}
