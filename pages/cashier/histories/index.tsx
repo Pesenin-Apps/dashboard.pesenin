@@ -2,12 +2,19 @@ import jwtDecode from 'jwt-decode';
 import ContentHistory from '../../../components/organisms/ContentHistory';
 import Navbar from '../../../components/organisms/Navbar';
 import Sidebar from '../../../components/organisms/Sidebar';
-import { UserTypes } from '../../../services/data-types';
+import { getOrdersCount } from '../../../services/cashier';
+import { CountOrderTypes, UserTypes } from '../../../services/data-types';
 
-export default function Histories() {
+interface HistoriesProps {
+  user: UserTypes;
+  counting: CountOrderTypes;
+}
+
+export default function Histories(props: HistoriesProps) {
+  const { user, counting } = props;
   return (
     <section className="dashboard-container overflow-auto">
-      <Sidebar />
+      <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
           <Navbar activeMenu="histories" />
@@ -51,7 +58,12 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
     };
   }
 
+  const countOrders = await getOrdersCount(jwtToken);
+
   return {
-    props: {},
+    props: {
+      user: userFromPayload,
+      counting: countOrders.data.data,
+    },
   };
 }
