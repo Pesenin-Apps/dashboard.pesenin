@@ -3,7 +3,6 @@ import convertDate from '../../../config/convertdate';
 import { getOrders } from '../../../services/cashier';
 import { OrderTypes } from '../../../services/data-types';
 import Card from './CardItem';
-import ModalDetail from './ModalDetail';
 
 export default function ContentOrder() {
   const [orders, setOrders] = useState([]);
@@ -26,19 +25,13 @@ export default function ContentOrder() {
 
   return (
     <div className="order-lists mb-30">
-
       <div className="container">
         <div className="row">
-
           {orders.map((order: OrderTypes) => (
-            <Card key={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
+            <Card key={order._id} id={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
           ))}
-
         </div>
       </div>
-
-      <ModalDetail />
-
     </div>
   );
 }

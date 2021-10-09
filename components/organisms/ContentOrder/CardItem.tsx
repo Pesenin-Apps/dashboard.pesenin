@@ -4,6 +4,7 @@ import Link from 'next/link';
 import NumberFormat from 'react-number-format';
 
 interface CardProps {
+  id: string;
   time: string;
   tableSection: string;
   tableNumber: string;
@@ -15,7 +16,7 @@ interface CardProps {
 
 export default function Card(props: Partial<CardProps>) {
   const {
-    time, tableSection, tableNumber, customerName, paymentAmount, status, orderNumber,
+    id, time, tableSection, tableNumber, customerName, paymentAmount, status, orderNumber,
   } = props;
 
   const statusClass = cx({
@@ -27,8 +28,8 @@ export default function Card(props: Partial<CardProps>) {
 
   return (
     <div className="col-3 ps-15 pe-15 pb-lg-3 pb-4">
-      <Link href="/#">
-        <a data-bs-toggle="modal" data-bs-target="#modalDetail">
+      <Link href={`cashier/orders/${id}`}>
+        <a>
           <div className="order-card">
             <div className="d-flex justify-content-between mb-3">
               <p className="text-md color-palette-0 fw-medium m-0">{time}</p>

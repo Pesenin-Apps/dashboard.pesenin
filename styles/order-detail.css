@@ -1,0 +1,11 @@
+/* .menu-detail main .main-content{
+    max-width: 860px;
+} */
+
+.dashboard-container .order-detail .main-content-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+  /* max-width: 860px; */
+  max-width: 100%;
+}

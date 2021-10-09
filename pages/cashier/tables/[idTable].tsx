@@ -12,9 +12,12 @@ export default function TableDetail() {
 
   const [dataItem, setDataItem] = useState({
     _id: '',
+    name: '',
     number: 0,
     section: {
+      _id: '',
       name: '',
+      code: '',
     },
     used: false,
   });

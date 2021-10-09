@@ -190,4 +190,13 @@ export async function getOrders(params: object, ps: true) {
   });
 }
 
+export async function getOrder(id: string, token: string) {
+  const url = `${ROOT_API}/${VERSION_API}/orders/${id}`;
+  return callAPI({
+    url,
+    method: 'GET',
+    serverToken: token,
+  });
+}
+
 /* ========= END ORDERS ========= */

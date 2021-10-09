@@ -59,6 +59,21 @@ export interface CustomerTypes {
   status: number;
 }
 
+export interface WaiterTypes {
+  _id: string;
+  waiter: string;
+  users: UserTypes;
+}
+
+export interface OrderItemTypes {
+  _id: string;
+  status: number;
+  product: MenuTypes;
+  price: number;
+  qty: number;
+  total: number;
+}
+
 export interface OrderTypes {
   _id: string;
   // eslint-disable-next-line camelcase
@@ -72,4 +87,7 @@ export interface OrderTypes {
   // eslint-disable-next-line camelcase
   total_overall: number;
   status: number;
+  // eslint-disable-next-line camelcase
+  order_items: [OrderItemTypes];
+  waiter: WaiterTypes;
 }

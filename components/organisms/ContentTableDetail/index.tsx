@@ -2,20 +2,13 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { deleteTable } from '../../../services/cashier';
+import { TableTypes } from '../../../services/data-types';
 import NavButtonDetail from '../../molecules/NavButtonDetail';
 import Caption from './Caption';
 import QrCode from './QrCode';
 
 interface TableDetailContentProps {
-  data: {
-    _id: string;
-    name: string;
-    number: number;
-    section: {
-      name: string;
-    }
-    used: boolean;
-  };
+  data: TableTypes;
 }
 
 export default function TableDetailContent(props: TableDetailContentProps) {
