@@ -9,12 +9,13 @@ interface CardProps {
   tableNumber: string;
   customerName: string;
   paymentAmount: number;
+  orderNumber: string;
   status: 'Sedang Diproses' | 'Menunggu Pembayaran'
 }
 
 export default function Card(props: Partial<CardProps>) {
   const {
-    time, tableSection, tableNumber, customerName, paymentAmount, status,
+    time, tableSection, tableNumber, customerName, paymentAmount, status, orderNumber,
   } = props;
 
   const statusClass = cx({
@@ -51,7 +52,9 @@ export default function Card(props: Partial<CardProps>) {
               </p>
             </div>
             <div>
-              <p className="text-sm color-palette-5 mb-0">Nama Pelanggan</p>
+              <p className="text-sm color-palette-5 mb-0">Kode</p>
+              <p className="text-md color-palette-0 fw-medium m-0">{orderNumber}</p>
+              <p className="text-sm color-palette-5 mb-0 mt-1">Nama Pelanggan</p>
               <p className="text-md color-palette-0 fw-medium m-0 customer-name">{customerName}</p>
               <p className="text-sm color-palette-5 mb-0 mt-1">Total Pembayaran</p>
               <p className="text-xl color-palette-0 fw-medium m-0">

@@ -61,6 +61,8 @@ export interface CustomerTypes {
 
 export interface OrderTypes {
   _id: string;
+  // eslint-disable-next-line camelcase
+  order_number: string;
   table: TableTypes;
   createdAt: string;
   customer: CustomerTypes;

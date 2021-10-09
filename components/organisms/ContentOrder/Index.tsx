@@ -9,6 +9,7 @@ export default function ContentOrder() {
   const [orders, setOrders] = useState([]);
 
   const params = {
+    period: 'all',
     filters: {
       status: [2, 3],
     },
@@ -30,7 +31,7 @@ export default function ContentOrder() {
         <div className="row">
 
           {orders.map((order: OrderTypes) => (
-            <Card time={convertDate(order.createdAt, 'dt')} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
+            <Card key={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
           ))}
 
         </div>
