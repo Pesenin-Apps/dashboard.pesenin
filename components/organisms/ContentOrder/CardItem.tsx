@@ -52,7 +52,6 @@ export default function Card(props: Partial<CardProps>) {
               </p>
             </div>
             <div>
-              <p className="text-sm color-palette-5 mb-0">Kode</p>
               <p className="text-md color-palette-0 fw-medium m-0">{orderNumber}</p>
               <p className="text-sm color-palette-5 mb-0 mt-1">Nama Pelanggan</p>
               <p className="text-md color-palette-0 fw-medium m-0 customer-name">{customerName}</p>
