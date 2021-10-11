@@ -23,6 +23,10 @@
   padding: 1.875rem;
 }
 
+.item-card.available.used {
+  border: 3px solid #ffa700;
+}
+
 .item-card.add {
   border: 2px solid #d0d0d0;
   padding: 0.72rem;

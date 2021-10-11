@@ -32,7 +32,12 @@ export default function Card(props: CardProps) {
         <p className="text-xl color-palette-0 fw-medium m-0">{title}</p>
         <div className="row d-flex justify-content-start pt-30 pb-20 ps-30 mx-auto">
           {tableTableSectionList.map((item: TableTypes) => (
-            <CardItemAvailable key={item._id} id={item._id} tableNumber={item.number} />
+            <CardItemAvailable
+              key={item._id}
+              id={item._id}
+              tableNumber={item.number}
+              used={item.used}
+            />
           ))}
           <CardItemAdd section={section} />
           <ModalCreate section={section} />
