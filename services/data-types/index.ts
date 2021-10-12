@@ -97,3 +97,11 @@ export interface CountOrderTypes {
   processed: number;
   finished: number;
 }
+
+export interface QueueTypes {
+  _id: string;
+  status: number;
+  qty: number;
+  order: OrderTypes;
+  product: MenuTypes;
+}

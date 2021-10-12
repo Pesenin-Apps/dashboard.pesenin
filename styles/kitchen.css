@@ -4,16 +4,21 @@
   border-radius: 1rem;
 }
 
+.dashboard-container .queue-lists .btn-refresh {
+  color: #ffffff;
+  background-color: #ffa700;
+}
+
 .dashboard-container .queue-lists table tbody tr td.menu {
   text-align: left;
 }
 
 .dashboard-container .queue-lists table tbody tr td.qty {
-  text-align: center;
+  text-align: left;
 }
 
 .dashboard-container .queue-lists table tbody tr td.table_number {
-  text-align: center;
+  text-align: right;
 }
 
 .dashboard-container .queue-lists table tbody tr td.btn-action {

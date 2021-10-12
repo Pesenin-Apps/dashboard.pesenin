@@ -33,7 +33,6 @@ export default function Form() {
         } else {
           toast.error('Anda Tidak Berhak Masuk!');
         }
-        console.log(response);
       }
     }
   };

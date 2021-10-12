@@ -55,8 +55,8 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
   const onSubmit = async () => {
     const dataUpdate = new FormData();
     dataUpdate.append('name', menu.name);
-    dataUpdate.append('price', menu.price);
-    dataUpdate.append('is_ready', menu.is_ready);
+    dataUpdate.append('price', menu.price.toString());
+    dataUpdate.append('is_ready', menu.is_ready.toString());
     dataUpdate.append('image', menu.image_url);
     dataUpdate.append('category', menu.category._id ?? menu.category);
     dataUpdate.append('type', menu.type._id ?? menu.type);
