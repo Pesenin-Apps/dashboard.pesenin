@@ -14,7 +14,7 @@
 }
 
 .dashboard-container .queue-lists table tbody tr td.qty {
-  text-align: left;
+  text-align: center;
 }
 
 .dashboard-container .queue-lists table tbody tr td.table_number {

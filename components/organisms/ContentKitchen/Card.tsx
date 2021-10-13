@@ -15,6 +15,7 @@ export default function Card(props: CardProps) {
   const { id, name } = props;
   const [queues, setQueues] = useState([]);
   const [countQueue, setCountQueue] = useState(0);
+  const [loading, setLoading] = useState(false);
   // const [refresh, setR efresh] = useState(Math.random());
   // const [mounted, setMounted] = useState(true);
   // const [seconds, setSeconds] = useState(0);
@@ -27,6 +28,7 @@ export default function Card(props: CardProps) {
     const data = await getQueues(value);
     setQueues(data.data.data);
     setCountQueue(data.data.count);
+    setLoading(true);
   }, [getQueues]);
 
   useEffect(() => {
@@ -82,30 +84,43 @@ export default function Card(props: CardProps) {
             Antrian
           </p>
         </div>
-        <table className="table table-borderless">
-          <tbody>
-            {queues.map((queue: QueueTypes) => (
-              <tr key={queue._id} className="align-middle">
-                <td className="menu" width="50%">
-                  <p className="fw-medium color-palette-0 m-0">{queue.product.name}</p>
-                </td>
-                <td className="qty">
-                  <p className="fw-medium color-palette-0 m-0">{queue.qty}</p>
-                </td>
-                <td className="table_number">
-                  <p className="fw-medium color-palette-0 m-0">{queue.order.table.name}</p>
-                </td>
-                <td className="btn-action">
-                  {queue.status === 2 ? (
-                    <ButtonProcessed id={queue._id} />
-                  ) : (
-                    <ButtonFinished id={queue._id} />
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {loading ? (queues.length !== 0 ? (
+          <table className="table table-borderless">
+            <tbody>
+              {queues.map((queue: QueueTypes) => (
+                <tr key={queue._id} className="align-middle">
+                  <td className="menu" width="49%">
+                    <p className="fw-medium color-palette-0 m-0">{queue.product.name}</p>
+                  </td>
+                  <td className="qty">
+                    <p className="fw-medium color-palette-0 m-0">{queue.qty}</p>
+                  </td>
+                  <td className="table_number">
+                    <p className="fw-medium color-palette-0 m-0">{queue.order.table.name}</p>
+                  </td>
+                  <td className="btn-action">
+                    {queue.status === 2 ? (
+                      <ButtonProcessed id={queue._id} />
+                    ) : (
+                      <ButtonFinished id={queue._id} />
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="my-5 text-center">
+            <h6 className="text-secondary">Pesanan Belum Ada...</h6>
+          </div>
+        )) : (
+          <div className="text-center my-auto">
+            <div className="spinner-border spinner-load" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="text-secondary">Silahkan Tunggu...</p>
+          </div>
+        )}
       </div>
     </div>
   );
