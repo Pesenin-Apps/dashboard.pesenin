@@ -13,6 +13,7 @@ export default function ContentMenu() {
   const [countItem, setcountItem] = useState(0);
   const [currentPage, setcurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const params = {
     search,
@@ -26,6 +27,7 @@ export default function ContentMenu() {
     setcountItem(response.data.count);
     setcurrentPage(response.data.pageCurrent);
     setLastPage(response.data.pageMaximum);
+    setLoading(true);
   }, [getMenus]);
 
   useEffect(() => {
@@ -62,31 +64,40 @@ export default function ContentMenu() {
             </div>
           </div>
 
-          <table className="table table-borderless">
-            <thead>
-              <tr className="color-palette-0">
-                <th className="" scope="col">Nama</th>
-                <th scope="col">Section</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Status</th>
-                <th scope="col">Opsi</th>
-              </tr>
-            </thead>
-            <tbody>
-              {menus.map((menu: MenuTypes) => (
-                <TableRow
-                  key={menu._id}
-                  image={menu.image_url}
-                  name={menu.name}
-                  type={menu.type.name}
-                  category={menu.category.name}
-                  price={menu.price}
-                  isReady={menu.is_ready}
-                  _id={menu._id}
-                />
-              ))}
-            </tbody>
-          </table>
+          {loading ? (
+            <table className="table table-borderless">
+              <thead>
+                <tr className="color-palette-0">
+                  <th className="" scope="col">Nama</th>
+                  <th scope="col">Section</th>
+                  <th scope="col">Harga</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Opsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {menus.map((menu: MenuTypes) => (
+                  <TableRow
+                    key={menu._id}
+                    image={menu.image_url}
+                    name={menu.name}
+                    type={menu.type.name}
+                    category={menu.category.name}
+                    price={menu.price}
+                    isReady={menu.is_ready}
+                    _id={menu._id}
+                  />
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="text-center mt-5">
+              <div className="spinner-border spinner-load" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="text-secondary">Silahkan Tunggu...</p>
+            </div>
+          )}
 
           <div className="d-flex justify-content-between mt-5">
             <div className="mt-2">
