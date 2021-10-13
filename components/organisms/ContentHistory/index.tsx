@@ -12,6 +12,7 @@ export default function ContentHistory() {
   const [countItem, setcountItem] = useState(0);
   const [currentPage, setcurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const params = {
     search,
@@ -28,6 +29,7 @@ export default function ContentHistory() {
     setcountItem(response.data.count);
     setcurrentPage(response.data.pageCurrent);
     setLastPage(response.data.pageMaximum);
+    setLoading(true);
   }, [getOrders]);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function ContentHistory() {
       <div className="container">
         <div className="row">
 
-          {histories.length !== 0 ? (
+          {loading ? (histories.length !== 0 ? (
             <>
               <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
                 <div className="search-card">
@@ -92,7 +94,14 @@ export default function ContentHistory() {
             </>
           ) : (
             <div className="mt-5 text-center">
-              <h4 className="text-secondary">Data tidak ditemukan</h4>
+              <h6 className="text-secondary">Data tidak ditemukan</h6>
+            </div>
+          )) : (
+            <div className="text-center mt-5">
+              <div className="spinner-border spinner-load" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="text-secondary">Silahkan Tunggu...</p>
             </div>
           )}
 
