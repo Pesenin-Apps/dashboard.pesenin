@@ -17,7 +17,7 @@ export default function ButtonFinished(props: ButtonFinishedProps) {
       text: 'Pesanan ini akan siap diantarkan oleh Pelayan!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#0d6efd',
+      confirmButtonColor: '#198754',
       confirmButtonText: 'Ya, selesai!',
       cancelButtonText: 'Batal',
     }).then(async (result) => {
