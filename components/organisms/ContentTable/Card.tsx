@@ -13,11 +13,13 @@ interface CardProps {
 export default function Card(props: CardProps) {
   const { title, section } = props;
   const [tableTableSectionList, setTableTableSection] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getTableTableSectionList = useCallback(
     async () => {
       const data = await getTableTableSection(section);
       setTableTableSection(data.data.data.tables);
+      setLoading(true);
     },
     [getTableTableSection],
   );
@@ -31,16 +33,27 @@ export default function Card(props: CardProps) {
       <div className="table-card h-100">
         <p className="text-xl color-palette-0 fw-medium m-0">{title}</p>
         <div className="row d-flex justify-content-start pt-30 pb-20 ps-30 mx-auto">
-          {tableTableSectionList.map((item: TableTypes) => (
+          {loading ? tableTableSectionList.map((item: TableTypes) => (
             <CardItemAvailable
               key={item._id}
               id={item._id}
               tableNumber={item.number}
               used={item.used}
             />
-          ))}
-          <CardItemAdd section={section} />
-          <ModalCreate section={section} />
+          )) : (
+            <div className="text-center my-auto">
+              <div className="spinner-border spinner-load" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="text-secondary">Silahkan Tunggu...</p>
+            </div>
+          )}
+          {loading && (
+            <>
+              <CardItemAdd section={section} />
+              <ModalCreate section={section} />
+            </>
+          )}
         </div>
       </div>
     </div>

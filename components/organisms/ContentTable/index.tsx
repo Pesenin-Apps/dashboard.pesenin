@@ -1,33 +1,22 @@
-import { useCallback, useEffect, useState } from 'react';
-import { getTableSection } from '../../../services/cashier';
 import { TableSectionTypes } from '../../../services/data-types';
 import Card from './Card';
 
-export default function ContentTable() {
-  const [tableSectionList, setTableSection] = useState([]);
+interface ContentTableProps {
+  data: TableSectionTypes[];
+}
 
-  const getTableSectionList = useCallback(
-    async () => {
-      const data = await getTableSection();
-      setTableSection(data.data.data);
-    },
-    [getTableSection],
-  );
+export default function ContentTable(props: ContentTableProps) {
+  const { data } = props;
 
-  useEffect(() => {
-    getTableSectionList();
-  }, []);
   return (
-    <>
-      <div className="table-lists mb-30">
-        <div className="container">
-          <div className="row">
-            {tableSectionList.map((item: TableSectionTypes) => (
-              <Card key={item._id} section={item._id} title={item.name} />
-            ))}
-          </div>
+    <div className="table-lists mb-30">
+      <div className="container">
+        <div className="row">
+          {data.map((item: TableSectionTypes) => (
+            <Card key={item._id} section={item._id} title={item.name} />
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -2,23 +2,24 @@ import jwtDecode from 'jwt-decode';
 import Sidebar from '../../../components/organisms/Sidebar';
 import Navbar from '../../../components/organisms/Navbar';
 import ContentTable from '../../../components/organisms/ContentTable';
-import { CountOrderTypes, UserTypes } from '../../../services/data-types';
-import { getOrdersCount } from '../../../services/cashier';
+import { CountOrderTypes, TableSectionTypes, UserTypes } from '../../../services/data-types';
+import { getOrdersCount, getTableSection } from '../../../services/cashier';
 
 interface TablesProps {
   user: UserTypes;
   counting: CountOrderTypes;
+  dataTableSections: TableSectionTypes[];
 }
 
 export default function Tables(props: TablesProps) {
-  const { user, counting } = props;
+  const { user, counting, dataTableSections } = props;
   return (
     <section className="dashboard-container overflow-auto">
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
           <Navbar activeMenu="tables" />
-          <ContentTable />
+          <ContentTable data={dataTableSections} />
         </div>
       </main>
     </section>
@@ -59,11 +60,13 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
   }
 
   const countOrders = await getOrdersCount(jwtToken);
+  const getTableSections = await getTableSection();
 
   return {
     props: {
       user: userFromPayload,
       counting: countOrders.data.data,
+      dataTableSections: getTableSections.data.data,
     },
   };
 }
