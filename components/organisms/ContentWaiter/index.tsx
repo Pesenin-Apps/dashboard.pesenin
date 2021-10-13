@@ -76,7 +76,6 @@ export default function ContentWaiter() {
                 </tr>
               </thead>
               <tbody>
-
                 {waiters.map((waiter: UserTypes) => (
                   <TableRow
                     key={waiter._id}
@@ -86,7 +85,6 @@ export default function ContentWaiter() {
                     since={waiter.createdAt}
                   />
                 ))}
-
               </tbody>
             </table>
           ) : (
