@@ -13,6 +13,7 @@ export default function ContentWaiter() {
   const [countItem, setCountItem] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const params = {
     search,
@@ -27,6 +28,7 @@ export default function ContentWaiter() {
     setCountItem(response.data.count);
     setCurrentPage(response.data.pageCurrent);
     setLastPage(response.data.pageMaximum);
+    setLoading(true);
   }, [getUsers]);
 
   useEffect(() => {
@@ -63,29 +65,38 @@ export default function ContentWaiter() {
             </div>
           </div>
 
-          <table className="table table-borderless">
-            <thead>
-              <tr className="color-palette-0">
-                <th className="" scope="col">Nama</th>
-                <th scope="col">Email</th>
-                <th scope="col">Terdaftar Sejak</th>
-                <th scope="col">Opsi</th>
-              </tr>
-            </thead>
-            <tbody>
+          {loading ? (
+            <table className="table table-borderless">
+              <thead>
+                <tr className="color-palette-0">
+                  <th className="" scope="col">Nama</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Terdaftar Sejak</th>
+                  <th scope="col">Opsi</th>
+                </tr>
+              </thead>
+              <tbody>
 
-              {waiters.map((waiter: UserTypes) => (
-                <TableRow
-                  key={waiter._id}
-                  _id={waiter._id}
-                  fullname={waiter.fullname}
-                  email={waiter.email}
-                  since={waiter.createdAt}
-                />
-              ))}
+                {waiters.map((waiter: UserTypes) => (
+                  <TableRow
+                    key={waiter._id}
+                    _id={waiter._id}
+                    fullname={waiter.fullname}
+                    email={waiter.email}
+                    since={waiter.createdAt}
+                  />
+                ))}
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          ) : (
+            <div className="text-center mt-5">
+              <div className="spinner-border spinner-load" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="text-secondary">Silahkan Tunggu...</p>
+            </div>
+          )}
 
           <div className="d-flex justify-content-between mt-5">
             <div className="mt-2">
