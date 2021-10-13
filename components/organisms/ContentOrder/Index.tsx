@@ -6,6 +6,7 @@ import Card from './CardItem';
 
 export default function ContentOrder() {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const params = {
     period: 'all',
@@ -17,6 +18,7 @@ export default function ContentOrder() {
   const getOrderAPI = useCallback(async (value) => {
     const response = await getOrders(value, true);
     setOrders(response.data.data);
+    setLoading(true);
   }, [getOrders]);
 
   useEffect(() => {
@@ -27,11 +29,18 @@ export default function ContentOrder() {
     <div className="order-lists mb-30">
       <div className="container">
         <div className="row">
-          {orders.length !== 0 ? orders.map((order: OrderTypes) => (
+          {loading ? (orders.length !== 0 ? orders.map((order: OrderTypes) => (
             <Card key={order._id} id={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
           )) : (
             <div className="mt-5 text-center">
               <h4 className="text-secondary">Data tidak ditemukan</h4>
+            </div>
+          )) : (
+            <div className="text-center mt-5">
+              <div className="spinner-border spinner-load" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="text-secondary">Mohon Tunggu...</p>
             </div>
           )}
         </div>

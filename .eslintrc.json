@@ -33,7 +33,8 @@
             "ts": "never",
             "tsx": "never"
         }],
-        "jsx-a11y/img-redundant-alt": "off"
+        "jsx-a11y/img-redundant-alt": "off",
+        "no-nested-ternary": "off"
     },
     "settings": {
         "import/extensions": [
