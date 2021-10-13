@@ -37,59 +37,66 @@ export default function ContentHistory() {
   return (
     <div className="history-lists mb-30">
       <div className="container">
-
         <div className="row">
 
-          <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
-            <div className="search-card">
-              <input
-                type="text"
-                className="form-control rounded-pill border border-2"
-                placeholder="Cari Menu..."
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                  setPage(1);
-                }}
-              />
-            </div>
-          </div>
-
-          {histories.map((history: OrderTypes) => (
-            <Card key={history._id} id={history._id} time={convertDate(history.createdAt, 'dt')} orderNumber={history.order_number} tableSection={history.table.section.name} tableNumber={history.table.number.toString()} customerName={history.customer == null ? '-' : history.customer.name} paymentAmount={history.total_overall} />
-          ))}
-
-          <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
-            <div className="pagination-card">
-              <div className="d-flex justify-content-between">
-                <div className="mt-2">
-                  <div className="text-sam text-secondary">
-                    Jumlah data
-                    {' '}
-                    {countItem}
-                  </div>
+          {histories.length !== 0 ? (
+            <>
+              <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
+                <div className="search-card">
+                  <input
+                    type="text"
+                    className="form-control rounded-pill border border-2"
+                    placeholder="Cari Menu..."
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      setPage(1);
+                    }}
+                  />
                 </div>
-                <nav aria-label="Pagination Histories">
-                  <ul className="pagination justify-content-center">
-                    <ButtonPagination disabled={page === 1} onClick={() => setPage(page - 1)} text="Sebelumnya" />
-                    <ButtonPagination disabled={lastPage <= page} onClick={() => setPage(page + 1)} text="Selanjutnya" />
-                  </ul>
-                </nav>
-                <div className="mt-2">
-                  <div className="text-sm text-secondary">
-                    Halaman
-                    {' '}
-                    {currentPage}
-                    {' '}
-                    dari
-                    {' '}
-                    {lastPage}
+              </div>
+
+              {histories.map((history: OrderTypes) => (
+                <Card key={history._id} id={history._id} time={convertDate(history.createdAt, 'dt')} orderNumber={history.order_number} tableSection={history.table.section.name} tableNumber={history.table.number.toString()} customerName={history.customer == null ? '-' : history.customer.name} paymentAmount={history.total_overall} />
+              ))}
+
+              <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
+                <div className="pagination-card">
+                  <div className="d-flex justify-content-between">
+                    <div className="mt-2">
+                      <div className="text-sam text-secondary">
+                        Jumlah data
+                        {' '}
+                        {countItem}
+                      </div>
+                    </div>
+                    <nav aria-label="Pagination Histories">
+                      <ul className="pagination justify-content-center">
+                        <ButtonPagination disabled={page === 1} onClick={() => setPage(page - 1)} text="Sebelumnya" />
+                        <ButtonPagination disabled={lastPage <= page} onClick={() => setPage(page + 1)} text="Selanjutnya" />
+                      </ul>
+                    </nav>
+                    <div className="mt-2">
+                      <div className="text-sm text-secondary">
+                        Halaman
+                        {' '}
+                        {currentPage}
+                        {' '}
+                        dari
+                        {' '}
+                        {lastPage}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </>
+          ) : (
+            <div className="mt-5 text-center">
+              <h4 className="text-secondary">Data tidak ditemukan</h4>
             </div>
-          </div>
-        </div>
+          )}
 
+        </div>
       </div>
     </div>
   );
