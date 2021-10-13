@@ -34,6 +34,7 @@ export default function ButtonProcessed(props: ButtonProcessedProps) {
       }
     });
   };
+
   return (
     <button type="button" className="btn btn-primary rounded-pill text-sm" onClick={onProcessed}>
       Proses
