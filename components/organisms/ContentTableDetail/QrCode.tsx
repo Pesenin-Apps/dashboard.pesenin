@@ -7,11 +7,11 @@ interface QrCodeProps {
 export default function QrCode(props: QrCodeProps) {
   const { table } = props;
 
-  const onImageCownload = () => {
-    const svg = document.getElementById('QRCode');
+  const onImageDownload = () => {
+    const svg = document.getElementById('QRCode') as HTMLImageElement; // OR as HTMLCanvasElement
     const svgData = new XMLSerializer().serializeToString(svg);
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     const img = new Image();
     img.onload = () => {
       canvas.width = img.width;
@@ -32,7 +32,7 @@ export default function QrCode(props: QrCodeProps) {
         <QRCode id="QRCode" value={table} size={200} />
       </div>
       <div className="mt-3">
-        <input type="button" value="Cetak QR-Code" onClick={onImageCownload} className="btn btn-warning btn-sm rounded-pill" />
+        <input type="button" value="Cetak QR-Code" onClick={onImageDownload} className="btn btn-warning btn-sm rounded-pill" />
       </div>
     </>
   );
