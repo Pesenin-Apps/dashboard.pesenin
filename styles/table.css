@@ -6,7 +6,8 @@
 
 .dashboard-container .table-lists a:hover {
   color: #0e0e0e;
-  background-color: #ffedcc;
+  background-color: #939597;
+  /* background-color: #ffedcc; */
 }
 
 .dashboard-container .table-lists .table-card .item-card {
@@ -24,7 +25,14 @@
 }
 
 .item-card.available.used {
-  border: 3px solid #ffa700;
+  /* border: 3px solid #ffa700; */
+  background-color: #04aa6d;
+  color: #fff;
+}
+
+.item-card.available.used a:hover {
+  /* border: 3px solid #ffa700; */
+  background-color: none;
 }
 
 .item-card.add {
