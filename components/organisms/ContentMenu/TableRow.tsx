@@ -36,7 +36,7 @@ export default function TableRow(props: TableRowProps) {
           src={imageSource}
           width="80"
           height="60"
-          alt="Menu Image"
+          alt="Product Image"
         />
         <div className="menu-title-header">
           <p className="menu-title fw-medium text-start color-palette-0 m-0">

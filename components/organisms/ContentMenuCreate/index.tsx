@@ -33,15 +33,15 @@ export default function ContentMenuCreate() {
 
   const onSubmit = async () => {
     if (!name) {
-      toast.error('Masukkan nama Menu!');
+      toast.error('Masukkan nama Produk!');
     } else if (!price) {
-      toast.error('Masukkan harga Menu!');
+      toast.error('Masukkan harga Produk!');
     } else if (!category) {
-      toast.error('Masukkan kategori Menu!');
+      toast.error('Masukkan kategori Produk!');
     } else if (!type) {
-      toast.error('Masukkan section Menu!');
+      toast.error('Masukkan section Produk!');
     } else if (!ready) {
-      toast.error('Masukkan status Menu!');
+      toast.error('Masukkan status Produk!');
     } else {
       const data = new FormData();
       data.append('name', name);
@@ -54,7 +54,7 @@ export default function ContentMenuCreate() {
       if (result.error) {
         toast.error(result.message);
       } else {
-        toast.success('Berhasil, menu telah ditambahkan!');
+        toast.success('Berhasil, Produk telah ditambahkan!');
         router.push('/cashier/menus');
       }
     }
@@ -70,7 +70,7 @@ export default function ContentMenuCreate() {
             <div className="d-flex flex-row  align-items-center justify-content-between mt-10 mb-30">
               <div className="d-flex flex-row align-items-center">
                 <div>
-                  <p className="fw-bold text-xl color-palette-0 mb-10">Tambah Menu baru</p>
+                  <p className="fw-bold text-xl color-palette-0 mb-10">Tambah Produk baru</p>
                   <p className="color-palette-5 m-0">Isi Data Yang Valid</p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function ContentMenuCreate() {
                   <input
                     type="text"
                     className="form-control rounded-pill text-lg"
-                    placeholder="Masukkan Nama Menu"
+                    placeholder="Masukkan Nama Produk"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -103,7 +103,7 @@ export default function ContentMenuCreate() {
                   <input
                     type="text"
                     className="form-control rounded-pill text-lg"
-                    placeholder="Masukkan Harga Menu"
+                    placeholder="Masukkan Harga Produk"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   />

@@ -64,7 +64,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
     if (response.error) {
       toast.error(response.message);
     } else {
-      toast.success('Berhasil, menu telah diubah!');
+      toast.success('Berhasil, Produk telah diubah!');
       router.push('/cashier/menus');
     }
   };
@@ -122,7 +122,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <input
                   type="text"
                   className="form-control rounded-pill text-lg"
-                  placeholder="Masukkan Nama Menu"
+                  placeholder="Masukkan Nama Produk"
                   value={menu.name}
                   onChange={(e) => setMenu({
                     ...menu,
@@ -140,7 +140,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <input
                   type="text"
                   className="form-control rounded-pill text-lg"
-                  placeholder="Masukkan Harga Menu"
+                  placeholder="Masukkan Harga Produk"
                   value={menu.price}
                   onChange={(e) => setMenu({
                     ...menu,
