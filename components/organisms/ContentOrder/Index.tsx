@@ -12,6 +12,7 @@ export default function ContentOrder() {
     period: 'all',
     filters: {
       status: [2, 3],
+      is_paid: false,
     },
   };
 

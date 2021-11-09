@@ -144,7 +144,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                   value={menu.price}
                   onChange={(e) => setMenu({
                     ...menu,
-                    price: e.target.value,
+                    price: parseFloat(e.target.value),
                   })}
                 />
               </div>
@@ -158,7 +158,10 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <select
                   className="form-select rounded-pill text-lg"
                   value={menu.category._id}
-                  onChange={(e) => setMenu({ ...menu, category: e.target.value })}
+                  onChange={(e) => setMenu({
+                    ...menu,
+                    category: e.target.value as unknown as MenuCategoryTypes,
+                  })}
                 >
                   <option>--- Pilih Kategori---</option>
                   {categoryOption.map((item: MenuCategoryTypes) => (
@@ -176,7 +179,10 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <select
                   className="form-select rounded-pill text-lg"
                   value={menu.type._id}
-                  onChange={(e) => setMenu({ ...menu, type: e.target.value })}
+                  onChange={(e) => setMenu({
+                    ...menu,
+                    type: e.target.value as unknown as MenuTypeTypes,
+                  })}
                 >
                   <option>--- Pilih Section---</option>
                   {typeOption.map((item: MenuTypeTypes) => (
@@ -191,7 +197,14 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                   {' '}
                   <span className="text-danger"> * </span>
                 </label>
-                <select className="form-select rounded-pill text-lg" value={menu.is_ready} onChange={(e) => setMenu({ ...menu, is_ready: e.target.value })}>
+                <select
+                  className="form-select rounded-pill text-lg"
+                  value={menu.is_ready as unknown as string}
+                  onChange={(e) => setMenu({
+                    ...menu,
+                    is_ready: e.target.value as unknown as boolean,
+                  })}
+                >
                   <option>--- Pilih Status---</option>
                   <option value="false">Tidak Tersedia Saat Ini</option>
                   <option value="true">Tersedia Saat Ini</option>
@@ -213,7 +226,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                     setImagePreview(URL.createObjectURL(img));
                     return setMenu({
                       ...menu,
-                      image_url: img,
+                      image_url: img as unknown as string,
                     });
                   }}
                 />

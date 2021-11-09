@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { updateOrderItem } from '../../../services/kitchen';
@@ -9,7 +8,6 @@ interface ButtonFinishedProps {
 
 export default function ButtonFinished(props: ButtonFinishedProps) {
   const { id } = props;
-  const router = useRouter();
 
   const onFinished = () => {
     Swal.fire({
@@ -26,8 +24,7 @@ export default function ButtonFinished(props: ButtonFinishedProps) {
         dataUpdate.append('status', '4');
         const response = await updateOrderItem(id, dataUpdate);
         if (!response.error) {
-          // toast.success('Berhasil, pesanan telah diproses!');
-          router.reload();
+          toast.success('Pesanan tersebut telah selesai!');
         } else {
           toast.error('Gagal, terjadi kesalahan!');
         }

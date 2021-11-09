@@ -1,10 +1,21 @@
 import {
-  useCallback, useEffect, useState,
+  // useCallback,
+  useEffect, useState,
 } from 'react';
 import { QueueTypes } from '../../../services/data-types';
-import { getQueues } from '../../../services/kitchen';
+// import { getQueues } from '../../../services/kitchen';
 import ButtonFinished from './ButtonFinished';
 import ButtonProcessed from './ButtonProcessed';
+// eslint-disable-next-line import/order
+import io from 'socket.io-client';
+
+const BASE_URL = process.env.NEXT_PUBLIC_API;
+// const socket = io(`${BASE_URL}`, { transports: ['websocket'] });
+// /?EIO=4&transport=websocket
+const socket = io(`${BASE_URL}/?transport=websocket`, {
+  secure: true,
+  // transports: ['websocket', 'polling'],
+});
 
 interface CardProps {
   id: string
@@ -16,62 +27,36 @@ export default function Card(props: CardProps) {
   const [queues, setQueues] = useState([]);
   const [countQueue, setCountQueue] = useState(0);
   const [loading, setLoading] = useState(false);
-  // const [refresh, setR efresh] = useState(Math.random());
-  // const [mounted, setMounted] = useState(true);
-  // const [seconds, setSeconds] = useState(0);
 
-  const params = {
-    section: id,
-  };
+  // rest api
+  // const params = {
+  //   section: id,
+  // };
 
-  const getQueueList = useCallback(async (value) => {
-    const data = await getQueues(value);
-    setQueues(data.data.data);
-    setCountQueue(data.data.count);
-    setLoading(true);
-  }, [getQueues]);
-
-  useEffect(() => {
-    getQueueList(params);
-  }, []);
+  // const getQueueList = useCallback(async (value) => {
+  //   const data = await getQueues(value);
+  //   setQueues(data.data.data);
+  //   setCountQueue(data.data.count);
+  //   setLoading(true);
+  // }, [getQueues]);
 
   // useEffect(() => {
-  //   // setMounted(true);
-  //   let isMounted = true;
-  //   getQueueList(id).then(() => {
-  //     setTimeout(() => {
-  //       if (isMounted) setRefresh(Math.random());
-  //     }, 1000);
-  //   });
-  //   return () => {
-  //     // setMounted(false);
-  //     isMounted = false;
-  //   };
-  // }, [refresh]);
-
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   const interval = setInterval(() => {
-  //     if (isMounted) getQueueList(params);
-  //     setSeconds((second) => second + 1);
-  //   }, 1000);
-  //   return () => {
-  //     isMounted = false;
-  //     clearInterval(interval);
-  //   };
-  // }, [seconds]);
-
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   const interval = setInterval(() => {
-  //     if (isMounted) setSeconds((second) => second + 1);
-  //   }, 1000);
   //   getQueueList(params);
-  //   return () => {
-  //     isMounted = false;
-  //     clearInterval(interval);
-  //   };
-  // }, [seconds]);
+  // }, []);
+
+  // socket io
+  useEffect(() => {
+    let isMounted = true;
+    socket.emit('queue', id);
+    socket.on(id, (data: any) => {
+      if (isMounted) setQueues(data.data);
+      if (isMounted) setCountQueue(data.count);
+    });
+    if (isMounted) setLoading(true);
+    return () => { // ComponentWillUnmount in Class Component
+      isMounted = false;
+    };
+  }, [queues, countQueue, loading]);
 
   return (
     <div className="col-4 ps-15 pe-15 pb-lg-3 pb-4">
@@ -111,7 +96,7 @@ export default function Card(props: CardProps) {
           </table>
         ) : (
           <div className="my-5 text-center">
-            <h6 className="text-secondary">Pesanan Belum Ada...</h6>
+            <h6 className="text-secondary">Belum Ada Pesanan...</h6>
           </div>
         )) : (
           <div className="text-center my-auto">

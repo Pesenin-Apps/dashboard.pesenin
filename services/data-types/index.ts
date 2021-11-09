@@ -90,6 +90,8 @@ export interface OrderTypes {
   // eslint-disable-next-line camelcase
   order_items: [OrderItemTypes];
   waiter: WaiterTypes;
+  // eslint-disable-next-line camelcase
+  is_paid: boolean;
 }
 
 export interface CountOrderTypes {

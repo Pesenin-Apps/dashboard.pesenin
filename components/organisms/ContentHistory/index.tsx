@@ -19,7 +19,8 @@ export default function ContentHistory() {
     limit: 12,
     page,
     filters: {
-      status: [4, 5, 6],
+      status: [3],
+      is_paid: true,
     },
   };
 

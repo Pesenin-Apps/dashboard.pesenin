@@ -208,4 +208,14 @@ export async function getOrder(id: string, token: string) {
   });
 }
 
+export async function updateOrder(id: string, data: any) {
+  const url = `${ROOT_API}/${VERSION_API}/orders/${id}`;
+  return callAPI({
+    url,
+    method: 'PATCH',
+    token: true,
+    data,
+  });
+}
+
 /* ========= END ORDERS ========= */
