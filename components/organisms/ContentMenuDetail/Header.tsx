@@ -13,7 +13,7 @@ export default function Header(props: HeaderProps) {
   } = props;
 
   const IMG = process.env.NEXT_PUBLIC_IMG;
-  const imageSource = (image == null) ? '/images/food-placeholder.png' : `${IMG}/${image}`;
+  const imageSource = (image == null) ? '/images/food-placeholder.jpg' : `${IMG}/${image}`;
   const statusText = isReady ? 'Tersedia' : 'Tidak Tersedia';
 
   const statusClass = cx({
