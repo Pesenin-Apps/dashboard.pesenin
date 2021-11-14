@@ -17,7 +17,7 @@
 
 .dashboard-container .menu-lists .menu-title {
   white-space: nowrap;
-  width: 135px;
+  width: 333px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

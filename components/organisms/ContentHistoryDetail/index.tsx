@@ -44,7 +44,7 @@ export default function ContentHistoryDetail(props: ContentHistoryDetailProps) {
               <table className="table table-borderless color-palette-0">
                 <thead>
                   <tr>
-                    <th scope="col">Menu</th>
+                    <th scope="col">Produk</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Total</th>

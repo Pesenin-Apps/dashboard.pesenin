@@ -18,7 +18,7 @@ export default function TableRow(props: TableRowProps) {
   } = props;
 
   const IMG = process.env.NEXT_PUBLIC_IMG;
-  const imageSource = image === null ? '/images/food-placeholder.png' : `${IMG}/${image}`;
+  const imageSource = image === null ? '/images/food-placeholder.jpg' : `${IMG}/${image}`;
   const statusText = isReady ? 'Tersedia' : 'Tidak Tersedia';
 
   const statusClass = cx({
@@ -36,7 +36,7 @@ export default function TableRow(props: TableRowProps) {
           src={imageSource}
           width="80"
           height="60"
-          alt="Menu Image"
+          alt="Product Image"
         />
         <div className="menu-title-header">
           <p className="menu-title fw-medium text-start color-palette-0 m-0">
