@@ -24,6 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
 
+        <title>Dashboard Pesenin Apps</title>
+        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+
         {/* Bootstraps CSS */}
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
