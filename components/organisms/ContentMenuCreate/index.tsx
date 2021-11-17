@@ -20,6 +20,13 @@ export default function ContentMenuCreate() {
 
   const router = useRouter();
 
+  const updateFormatNumber = (val: string) => {
+    const valCurrency = val.replace(/\D/g, '');
+    const x = Number(valCurrency);
+
+    setPrice(x as unknown as string);
+  };
+
   const fetchAllData = useCallback(async () => {
     const getCategory = await getMenuCategories();
     const getType = await getMenuTypes();
@@ -98,14 +105,15 @@ export default function ContentMenuCreate() {
                   <label className="form-label text-lg fw-medium color-palette-0 mb-10">
                     Harga
                     {' '}
+                    (Rp.)
                     <span className="text-danger"> * </span>
                   </label>
                   <input
                     type="text"
                     className="form-control rounded-pill text-lg"
                     placeholder="Masukkan Harga Produk"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    value={price.toLocaleString().replace(/[,.]/g, (m) => (m === ',' ? '.' : ','))}
+                    onChange={(e) => updateFormatNumber(e.target.value)}
                   />
                 </div>
 
@@ -116,7 +124,7 @@ export default function ContentMenuCreate() {
                     <span className="text-danger"> * </span>
                   </label>
                   <select className="form-select rounded-pill text-lg" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option>--- Pilih Kategori---</option>
+                    <option>--- Pilih Kategori ---</option>
                     {categoryOption.map((item: MenuCategoryTypes) => (
                       <option key={item._id} value={item._id}>{item.name}</option>
                     ))}
@@ -130,7 +138,7 @@ export default function ContentMenuCreate() {
                     <span className="text-danger"> * </span>
                   </label>
                   <select className="form-select rounded-pill text-lg" value={type} onChange={(e) => setType(e.target.value)}>
-                    <option>--- Pilih Section---</option>
+                    <option>--- Pilih Section ---</option>
                     {typeOption.map((item: MenuTypeTypes) => (
                       <option key={item._id} value={item._id}>{item.name}</option>
                     ))}
@@ -144,7 +152,7 @@ export default function ContentMenuCreate() {
                     <span className="text-danger"> * </span>
                   </label>
                   <select className="form-select rounded-pill text-lg" value={ready} onChange={(e) => setReady(e.target.value)}>
-                    <option>--- Pilih Status---</option>
+                    <option>--- Pilih Status ---</option>
                     <option value="false">Tidak Tersedia Saat Ini</option>
                     <option value="true">Tersedia Saat Ini</option>
                   </select>
