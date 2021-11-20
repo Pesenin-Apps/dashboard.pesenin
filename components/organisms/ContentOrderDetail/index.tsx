@@ -24,7 +24,7 @@ export default function ContentOrderDetail(props: ContentOrderDetailProps) {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#198754',
-      confirmButtonText: 'Ya, proses!',
+      confirmButtonText: 'Ya, telah dibayar!',
       cancelButtonText: 'Batal',
     }).then(async (result) => {
       if (result.isConfirmed) {
