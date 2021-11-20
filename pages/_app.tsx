@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Pesenin Apps merupakan aplikasi pemesanan makanan dan minuman secara virtual." />
         <meta property="og:title" content="Dashboard Pesenin Apps" />
         <meta property="og:description" content="Pesenin Apps merupakan aplikasi pemesanan makanan dan minuman secara virtual." />
-        <meta property="og:image" content="https://dashboard-pesenin.vercel.app/cashier/menus" />
+        <meta property="og:image" content="https://dashboard-pesenin.vercel.app/assets/logonotext.svg" />
 
         {/* Bootstraps CSS */}
         <link
