@@ -62,7 +62,7 @@ export default function TableRow(props: TableRowProps) {
       <td>
         <Link href={`/cashier/menus/${_id}`}>
           <a className="btn btn-primary rounded-pill text-sm">
-            Details
+            Detail
           </a>
         </Link>
       </td>
