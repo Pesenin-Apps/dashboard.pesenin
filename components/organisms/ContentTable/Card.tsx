@@ -38,7 +38,7 @@ export default function Card(props: CardProps) {
               key={item._id}
               id={item._id}
               tableNumber={item.number}
-              used={item.used}
+              status={item.status}
             />
           )) : (
             <div className="text-center my-auto">

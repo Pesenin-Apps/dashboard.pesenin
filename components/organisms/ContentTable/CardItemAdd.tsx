@@ -13,6 +13,7 @@ export default function CardItemAdd(props: CardItemAddProps) {
         className="item-card add"
         data-bs-toggle="modal"
         data-bs-target={`#modalTableCreate${section}`}
+        title="Tambah Meja"
       >
         <Image src="/assets/icons/add.svg" width={53} height={53} />
       </a>

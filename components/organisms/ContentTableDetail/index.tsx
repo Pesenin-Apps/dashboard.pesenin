@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { TableStatus } from '../../../config/constans';
 import { deleteTable } from '../../../services/cashier';
 import { TableTypes } from '../../../services/data-types';
 import NavButtonDetail from '../../molecules/NavButtonDetail';
@@ -51,7 +52,7 @@ export default function TableDetailContent(props: TableDetailContentProps) {
                 <Caption title="Kode Meja" content={data.name} />
                 <Caption title="Nomor Meja" content={data.number.toString()} />
                 <Caption title="Letak" content={data.section.name} />
-                <Caption title="Status" content={data.used === true ? 'Terisi' : 'Kosong (FREE)'} />
+                <Caption title="Status" content={data.status === TableStatus.free ? 'Kosong (FREE)' : (data.status === TableStatus.used ? 'Terisi' : 'Reservasi')} />
               </div>
               <div className="col-1" />
             </div>

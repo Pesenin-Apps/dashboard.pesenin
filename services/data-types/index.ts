@@ -31,7 +31,7 @@ export interface TableTypes {
   _id: string;
   name: string;
   number: number;
-  used: boolean;
+  status: number;
   section: TableSectionTypes;
 }
 
