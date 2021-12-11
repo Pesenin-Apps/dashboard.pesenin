@@ -1,9 +1,26 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback, // TODO: Rest API Get
+  useEffect,
+  useState,
+} from 'react';
 import CardItemAdd from './CardItemAdd';
 import CardItemAvailable from './CardItemAvailable';
-import { getTableTableSection } from '../../../services/cashier';
+import { getTableTableSection } from '../../../services/cashier'; // TODO: Rest API Get
 import { TableTypes } from '../../../services/data-types';
 import ModalCreate from './ModalCreate';
+
+// TODO: Socket.io
+// eslint-disable-next-line import/order
+// import io from 'socket.io-client';
+
+// const BASE_URL = process.env.NEXT_PUBLIC_API;
+
+// const socket = io(`${BASE_URL}`, {
+//   secure: true,
+//   transports: [
+//     'polling',
+//   ],
+// });
 
 interface CardProps {
   title: string;
@@ -15,6 +32,20 @@ export default function Card(props: CardProps) {
   const [tableTableSectionList, setTableTableSection] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // TODO: Socket.io
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   socket.emit('table-section', section);
+  //   socket.on(section, (data: any) => {
+  //     if (isMounted) setTableTableSection(data.data.tables);
+  //   });
+  //   if (isMounted) setLoading(true);
+  //   return () => { // ComponentWillUnmount in Class Component
+  //     isMounted = false;
+  //   };
+  // }, [tableTableSectionList]);
+
+  // TODO: Rest API Get
   const getTableTableSectionList = useCallback(
     async () => {
       const data = await getTableTableSection(section);
