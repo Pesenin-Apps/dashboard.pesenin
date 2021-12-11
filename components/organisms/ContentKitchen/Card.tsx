@@ -10,11 +10,12 @@ import ButtonProcessed from './ButtonProcessed';
 import io from 'socket.io-client';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API;
-// const socket = io(`${BASE_URL}`, { transports: ['websocket'] });
-// /?EIO=4&transport=websocket
-const socket = io(`${BASE_URL}/?transport=websocket`, {
+
+const socket = io(`${BASE_URL}`, {
   secure: true,
-  // transports: ['websocket', 'polling'],
+  transports: [
+    'polling',
+  ],
 });
 
 interface CardProps {
@@ -56,7 +57,7 @@ export default function Card(props: CardProps) {
     return () => { // ComponentWillUnmount in Class Component
       isMounted = false;
     };
-  }, [queues, countQueue, loading]);
+  }, [queues, countQueue]);
 
   return (
     <div className="col-4 ps-15 pe-15 pb-lg-3 pb-4">

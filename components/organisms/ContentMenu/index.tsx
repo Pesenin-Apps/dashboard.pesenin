@@ -44,7 +44,7 @@ export default function ContentMenu() {
               <input
                 type="text"
                 className="form-control rounded-pill border border-2"
-                placeholder="Cari Menu..."
+                placeholder="Cari Produk..."
                 onChange={(e) => {
                   setSearch(e.target.value);
                   setPage(1);

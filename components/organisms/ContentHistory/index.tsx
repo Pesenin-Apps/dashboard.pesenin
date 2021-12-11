@@ -42,19 +42,24 @@ export default function ContentHistory() {
       <div className="container">
         <div className="row">
 
-          {loading ? (histories.length !== 0 ? (
+          {loading ? (histories.length !== 0 || search !== '' ? (
             <>
               <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
                 <div className="search-card">
-                  <input
-                    type="text"
-                    className="form-control rounded-pill border border-2"
-                    placeholder="Cari Menu..."
-                    onChange={(e) => {
-                      setSearch(e.target.value);
-                      setPage(1);
-                    }}
-                  />
+                  <div className="input-group">
+                    <span className="input-group-text" id="search-history">ORDER#</span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Cari Riwayat Pesanan..."
+                      aria-label="Search Order History"
+                      aria-describedby="search-history"
+                      onChange={(e) => {
+                        setSearch(e.target.value);
+                        setPage(1);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
 

@@ -24,7 +24,7 @@ export default function TableDetail(props: TableDetailProps) {
       name: '',
       code: '',
     },
-    used: false,
+    status: 1,
   });
 
   const getTableDetailAPI = useCallback(async (id) => {

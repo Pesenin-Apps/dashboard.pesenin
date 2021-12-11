@@ -36,6 +36,13 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
 
   const router = useRouter();
 
+  const updateFormatNumber = (val: number) => {
+    const valCurrency = val.toString().replace(/\D/g, '');
+    const x = Number(valCurrency);
+
+    setMenu({ ...menu, price: x as unknown as number });
+  };
+
   // fetch data
   const [categoryOption, setCategoryOption] = useState([]);
   const [typeOption, setTypeOption] = useState([]);
@@ -64,7 +71,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
     if (response.error) {
       toast.error(response.message);
     } else {
-      toast.success('Berhasil, menu telah diubah!');
+      toast.success('Berhasil, Produk telah diubah!');
       router.push('/cashier/menus');
     }
   };
@@ -122,7 +129,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <input
                   type="text"
                   className="form-control rounded-pill text-lg"
-                  placeholder="Masukkan Nama Menu"
+                  placeholder="Masukkan Nama Produk"
                   value={menu.name}
                   onChange={(e) => setMenu({
                     ...menu,
@@ -135,17 +142,15 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                 <label className="form-label text-lg fw-medium color-palette-0 mb-10">
                   Harga
                   {' '}
+                  (Rp.)
                   <span className="text-danger"> * </span>
                 </label>
                 <input
                   type="text"
                   className="form-control rounded-pill text-lg"
-                  placeholder="Masukkan Harga Menu"
-                  value={menu.price}
-                  onChange={(e) => setMenu({
-                    ...menu,
-                    price: parseFloat(e.target.value),
-                  })}
+                  placeholder="Masukkan Harga Produk"
+                  value={menu.price.toLocaleString().replace(/[,.]/g, (m) => (m === ',' ? '.' : ','))}
+                  onChange={(e) => updateFormatNumber(e.target.value as unknown as number)}
                 />
               </div>
 
@@ -163,7 +168,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                     category: e.target.value as unknown as MenuCategoryTypes,
                   })}
                 >
-                  <option>--- Pilih Kategori---</option>
+                  <option>--- Pilih Kategori ---</option>
                   {categoryOption.map((item: MenuCategoryTypes) => (
                     <option key={item._id} value={item._id}>{item.name}</option>
                   ))}
@@ -184,7 +189,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                     type: e.target.value as unknown as MenuTypeTypes,
                   })}
                 >
-                  <option>--- Pilih Section---</option>
+                  <option>--- Pilih Section ---</option>
                   {typeOption.map((item: MenuTypeTypes) => (
                     <option key={item._id} value={item._id}>{item.name}</option>
                   ))}
@@ -205,7 +210,7 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
                     is_ready: e.target.value as unknown as boolean,
                   })}
                 >
-                  <option>--- Pilih Status---</option>
+                  <option>--- Pilih Status ---</option>
                   <option value="false">Tidak Tersedia Saat Ini</option>
                   <option value="true">Tersedia Saat Ini</option>
                 </select>

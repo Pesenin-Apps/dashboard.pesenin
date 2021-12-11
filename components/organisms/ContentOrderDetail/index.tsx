@@ -24,7 +24,7 @@ export default function ContentOrderDetail(props: ContentOrderDetailProps) {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#198754',
-      confirmButtonText: 'Ya, proses!',
+      confirmButtonText: 'Ya, telah dibayar!',
       cancelButtonText: 'Batal',
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -75,7 +75,7 @@ export default function ContentOrderDetail(props: ContentOrderDetailProps) {
               <table className="table table-borderless color-palette-0">
                 <thead>
                   <tr>
-                    <th scope="col">Menu</th>
+                    <th scope="col">Produk</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Total</th>
