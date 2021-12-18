@@ -1,7 +1,7 @@
 import callAPI from '../config/api';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
-const VERSION_API = 'api/v1';
+const VERSION_API = 'v1';
 
 export async function getQueues(params: object) {
   const url = `${ROOT_API}/${VERSION_API}/queues`;
