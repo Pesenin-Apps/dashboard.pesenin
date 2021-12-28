@@ -115,7 +115,7 @@ export async function getMenuCategories() {
 
 // Menu Type
 export async function getMenuTypes() {
-  const url = `${ROOT_API}/${VERSION_API}/products/types`;
+  const url = `${ROOT_API}/${VERSION_API}/products/types?belong=1`;
   return callAPI({
     url,
     method: 'GET',

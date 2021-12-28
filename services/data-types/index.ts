@@ -6,6 +6,7 @@ export interface MenuCategoryTypes {
 export interface MenuTypeTypes {
   _id: string;
   name: string;
+  // belong: number;
 }
 
 export interface MenuTypes {
@@ -29,10 +30,10 @@ export interface TableSectionTypes {
 
 export interface TableTypes {
   _id: string;
-  name: string;
-  number: number;
   status: number;
+  number: number;
   section: TableSectionTypes;
+  name: string;
 }
 
 export interface signInTypes {
@@ -46,10 +47,11 @@ export interface UserTypes {
   email: string;
   role: string;
   password: string;
+  phone: string;
   createdAt: string;
 }
 
-export interface CustomerTypes {
+export interface GuestTypes {
   _id: string;
   name: string;
   // eslint-disable-next-line camelcase
@@ -77,21 +79,24 @@ export interface OrderItemTypes {
 export interface OrderTypes {
   _id: string;
   // eslint-disable-next-line camelcase
-  order_number: string;
+  is_paid: boolean;
   table: TableTypes;
   createdAt: string;
-  customer: CustomerTypes;
+  customer: UserTypes;
+  guest: GuestTypes;
   // eslint-disable-next-line camelcase
-  total_price: number;
+  order_items: [OrderItemTypes];
+  // eslint-disable-next-line camelcase
+  order_number: string;
+  status: number;
   tax: number;
   // eslint-disable-next-line camelcase
   total_overall: number;
-  status: number;
   // eslint-disable-next-line camelcase
-  order_items: [OrderItemTypes];
+  total_price: number;
+  type: number;
+  via: number;
   waiter: WaiterTypes;
-  // eslint-disable-next-line camelcase
-  is_paid: boolean;
 }
 
 export interface CountOrderTypes {
