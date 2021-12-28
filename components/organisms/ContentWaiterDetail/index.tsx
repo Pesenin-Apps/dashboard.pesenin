@@ -19,6 +19,7 @@ export default function ContentWaiterDetail(props: ContentMenuDetailProps) {
     email: '',
     role: '',
     password: '',
+    phone: '',
     createdAt: '',
   });
   const [newPassword, setNewPassword] = useState('');

@@ -6,7 +6,7 @@ export interface MenuCategoryTypes {
 export interface MenuTypeTypes {
   _id: string;
   name: string;
-  belong: number;
+  // belong: number;
 }
 
 export interface MenuTypes {
