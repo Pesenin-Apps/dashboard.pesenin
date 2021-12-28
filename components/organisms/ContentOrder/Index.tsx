@@ -31,7 +31,7 @@ export default function ContentOrder() {
       <div className="container">
         <div className="row">
           {loading ? (orders.length !== 0 ? orders.map((order: OrderTypes) => (
-            <Card key={order._id} id={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer == null ? '-' : order.customer.name} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
+            <Card key={order._id} id={order._id} time={convertDate(order.createdAt, 'dt')} orderNumber={order.order_number} tableSection={order.table.section.name} tableNumber={order.table.number.toString()} customerName={order.customer != null ? order.customer.fullname : order.guest != null ? order.guest.name : '-'} paymentAmount={order.total_overall} status={order.status === 2 ? 'Sedang Diproses' : 'Menunggu Pembayaran'} />
           )) : (
             <div className="mt-5 text-center">
               <h6 className="text-secondary">Data tidak ditemukan</h6>

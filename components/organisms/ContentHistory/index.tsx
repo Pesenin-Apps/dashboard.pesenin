@@ -64,7 +64,7 @@ export default function ContentHistory() {
               </div>
 
               {histories.map((history: OrderTypes) => (
-                <Card key={history._id} id={history._id} time={convertDate(history.createdAt, 'dt')} orderNumber={history.order_number} tableSection={history.table.section.name} tableNumber={history.table.number.toString()} customerName={history.customer == null ? '-' : history.customer.name} paymentAmount={history.total_overall} />
+                <Card key={history._id} id={history._id} time={convertDate(history.createdAt, 'dt')} orderNumber={history.order_number} tableSection={history.table.section.name} tableNumber={history.table.number.toString()} customerName={history.customer != null ? history.customer.fullname : history.guest != null ? history.guest.name : '-'} paymentAmount={history.total_overall} />
               ))}
 
               <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">

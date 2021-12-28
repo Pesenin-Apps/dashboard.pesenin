@@ -1,3 +1,4 @@
+import { OrderType, OrderVia } from '../../../config/constans';
 import convertDate from '../../../config/convertdate';
 import { OrderItemTypes, OrderTypes } from '../../../services/data-types';
 import NavButtonCreate from '../../molecules/NavButtonCreate';
@@ -20,9 +21,9 @@ export default function ContentHistoryDetail(props: ContentHistoryDetailProps) {
             <div className="container mt-10">
               <div className="d-flex justify-content-between mx-3 mb-3">
                 <div className="row-6">
-                  <p className="text-xl color-palette-0 fw-medium m-0">{data.customer === null ? '-' : data.customer.checkin_number}</p>
-                  <p className="text-md color-palette-0 fw-medium m-0">{data.customer === null ? '-' : data.customer.name}</p>
-                  <p className="text-sm color-palette-5 m-0">{data.customer === null ? '-' : data.customer.device_detection}</p>
+                  <p className="text-xl color-palette-0 fw-medium m-0">{data.customer !== null ? data.customer.email : data.guest !== null ? data.guest.checkin_number : '-'}</p>
+                  <p className="text-md color-palette-0 fw-medium m-0">{data.customer !== null ? data.customer.fullname : data.guest !== null ? data.guest.name : '-'}</p>
+                  <p className="text-sm color-palette-5 m-0">{data.customer !== null ? data.customer.phone : data.guest !== null ? data.guest.device_detection : '-'}</p>
                   <p className="text-sm color-palette-0 m-0">
                     {data.table.section.name}
                     {' '}
@@ -32,12 +33,22 @@ export default function ContentHistoryDetail(props: ContentHistoryDetailProps) {
                       {data.table.number}
                     </strong>
                   </p>
+                  {data.type === OrderType.dinein ? (
+                    <span className="badge bg-danger">DINE-IN</span>
+                  ) : (
+                    <span className="badge bg-primary">RESERVATION</span>
+                  )}
                 </div>
                 <div className="row-6">
                   <p className="text-xl color-palette-0 fw-medium m-0">{data.order_number}</p>
                   <p className="text-md color-palette-0 fw-medium m-0">{convertDate(data.createdAt, 'dd')}</p>
                   <p className="text-sm color-palette-0 m-0">{data.waiter.users.fullname}</p>
                   <p className="text-sm color-palette-5 m-0">{data.waiter.users.email}</p>
+                  {data.via === OrderVia.guest || data.via === OrderVia.customer ? (
+                    <span className="badge bg-theme text-white">Pemesanan Via Pelanggan</span>
+                  ) : (
+                    <span className="badge bg-secondary">Pemesanan Via Waiter</span>
+                  )}
                 </div>
               </div>
               <hr />
