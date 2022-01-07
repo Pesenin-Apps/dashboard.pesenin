@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import ContentKitchen from '../../components/organisms/ContentKitchen';
+import NavbarKitchen from '../../components/organisms/Navbar/kitchen';
 import Sidebar from '../../components/organisms/Sidebar';
 import { getMenuTypes, getOrdersCount } from '../../services/cashier';
 import { CountOrderTypes, MenuTypeTypes, UserTypes } from '../../services/data-types';
@@ -15,7 +16,12 @@ export default function Kitchen(props: KitchenProps) {
   return (
     <section className="dashboard-container overflow-auto">
       <Sidebar userData={user} countData={counting} />
-      <ContentKitchen data={sections} />
+      <main className="main-wrapper">
+        <div className="ps-lg-0">
+          <NavbarKitchen activeMenu="queue" />
+          <ContentKitchen data={sections} />
+        </div>
+      </main>
     </section>
   );
 }
