@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import ContentHistory from '../../../components/organisms/ContentHistory';
-import Navbar from '../../../components/organisms/Navbar';
+import NavbarCashier from '../../../components/organisms/Navbar/cashier';
 import Sidebar from '../../../components/organisms/Sidebar';
 import { getOrdersCount } from '../../../services/cashier';
 import { CountOrderTypes, UserTypes } from '../../../services/data-types';
@@ -17,7 +17,7 @@ export default function Histories(props: HistoriesProps) {
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <Navbar activeMenu="histories" />
+          <NavbarCashier activeMenu="histories" />
           <ContentHistory />
         </div>
       </main>

@@ -76,6 +76,19 @@ export interface OrderItemTypes {
   total: number;
 }
 
+export interface OrderReservation {
+  _id: string;
+  // eslint-disable-next-line camelcase
+  datetime_plan: string;
+  // eslint-disable-next-line camelcase
+  number_of_people: string;
+  status: number;
+  // eslint-disable-next-line camelcase
+  serving_type: number;
+  // eslint-disable-next-line camelcase
+  reservation_confirm: number;
+}
+
 export interface OrderTypes {
   _id: string;
   // eslint-disable-next-line camelcase
@@ -97,6 +110,7 @@ export interface OrderTypes {
   type: number;
   via: number;
   waiter: WaiterTypes;
+  reservation: OrderReservation;
 }
 
 export interface CountOrderTypes {

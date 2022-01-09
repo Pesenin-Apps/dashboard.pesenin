@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import Navbar from '../../../components/organisms/Navbar';
+import NavbarCashier from '../../../components/organisms/Navbar/cashier';
 import Sidebar from '../../../components/organisms/Sidebar';
 import ContentMenu from '../../../components/organisms/ContentMenu';
 import { CountOrderTypes, UserTypes } from '../../../services/data-types';
@@ -17,7 +17,7 @@ export default function Menus(props: MenusProps) {
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <Navbar activeMenu="menus" />
+          <NavbarCashier activeMenu="menus" />
           <ContentMenu />
         </div>
       </main>

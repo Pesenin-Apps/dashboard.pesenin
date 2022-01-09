@@ -1,25 +1,24 @@
 import jwtDecode from 'jwt-decode';
-import ContentMenuDetail from '../../../components/organisms/ContentMenuDetail';
-import NavbarCashier from '../../../components/organisms/Navbar/cashier';
+import ContentReservation from '../../../components/organisms/ContentReservation';
+import NavbarKitchen from '../../../components/organisms/Navbar/kitchen';
 import Sidebar from '../../../components/organisms/Sidebar';
-import { getMenu, getOrdersCount } from '../../../services/cashier';
-import { CountOrderTypes, MenuTypes, UserTypes } from '../../../services/data-types';
+import { getOrdersCount } from '../../../services/cashier';
+import { CountOrderTypes, UserTypes } from '../../../services/data-types';
 
-interface DetailProps {
+interface ReservationProps {
   user: UserTypes;
   counting: CountOrderTypes;
-  menuDetail: MenuTypes;
 }
 
-export default function Detail(props: DetailProps) {
-  const { user, counting, menuDetail } = props;
+export default function Reservation(props: ReservationProps) {
+  const { user, counting } = props;
   return (
     <section className="dashboard-container overflow-auto">
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <NavbarCashier activeMenu="menus" />
-          <ContentMenuDetail data={menuDetail} />
+          <NavbarKitchen activeMenu="reservation" />
+          <ContentReservation />
         </div>
       </main>
     </section>
@@ -30,15 +29,11 @@ interface GetServerSideProps {
   req: {
     cookies: {
       token: string;
-    },
-  },
-  params: {
-    idMenu: string;
-  }
+    };
+  };
 }
 
-export async function getServerSideProps({ req, params }: GetServerSideProps) {
-  const { idMenu } = params;
+export async function getServerSideProps({ req }: GetServerSideProps) {
   const { token } = req.cookies;
 
   if (!token) {
@@ -54,7 +49,7 @@ export async function getServerSideProps({ req, params }: GetServerSideProps) {
   const payload: UserTypes = jwtDecode(jwtToken);
   const userFromPayload: UserTypes = payload;
 
-  if (userFromPayload.role !== 'cashier') {
+  if (userFromPayload.role !== 'kitchen') {
     return {
       redirect: {
         destination: '/',
@@ -64,13 +59,11 @@ export async function getServerSideProps({ req, params }: GetServerSideProps) {
   }
 
   const countOrders = await getOrdersCount(jwtToken);
-  const getMenuDetail = await getMenu(idMenu);
 
   return {
     props: {
       user: userFromPayload,
       counting: countOrders.data.data,
-      menuDetail: getMenuDetail.data.data,
     },
   };
 }

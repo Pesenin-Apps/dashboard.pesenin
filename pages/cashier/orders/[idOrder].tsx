@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import ContentOrderDetail from '../../../components/organisms/ContentOrderDetail';
-import Navbar from '../../../components/organisms/Navbar';
+import NavbarCashier from '../../../components/organisms/Navbar/cashier';
 import Sidebar from '../../../components/organisms/Sidebar';
 import { getOrder, getOrdersCount } from '../../../services/cashier';
 import { CountOrderTypes, OrderTypes, UserTypes } from '../../../services/data-types';
@@ -18,7 +18,7 @@ export default function OrderDetail(props: OrderDetailProps) {
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <Navbar activeMenu="orders" />
+          <NavbarCashier activeMenu="orders" />
           <ContentOrderDetail data={orderDetail} />
         </div>
       </main>
