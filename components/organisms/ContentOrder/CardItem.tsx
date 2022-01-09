@@ -7,14 +7,6 @@ import { OrderTypes } from '../../../services/data-types';
 
 interface CardProps {
   data: OrderTypes,
-  id: string;
-  time: string;
-  tableSection: string;
-  tableNumber: string;
-  customerName: string;
-  paymentAmount: number;
-  orderNumber: string;
-  status: 'Sedang Diproses' | 'Menunggu Pembayaran'
 }
 
 export default function Card(props: Partial<CardProps>) {
