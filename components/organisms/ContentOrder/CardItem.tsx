@@ -55,7 +55,7 @@ export default function Card(props: Partial<CardProps>) {
             <div>
               <p className="text-md color-palette-0 fw-medium m-0">{data?.order_number}</p>
               <p className="text-sm color-palette-5 mb-0 mt-1">Nama Pelanggan</p>
-              <p className="text-md color-palette-0 fw-medium m-0 customer-name">{data?.customer.fullname}</p>
+              <p className="text-md color-palette-0 fw-medium m-0 customer-name">{data?.customer != null ? data?.customer.fullname : data?.guest != null ? data?.guest.name : '-'}</p>
               <p className="text-sm color-palette-5 mb-0 mt-1">Total Pembayaran</p>
               <p className="text-xl color-palette-0 fw-medium m-0">
                 <NumberFormat value={data?.total_overall} prefix="Rp. " displayType="text" thousandSeparator="." decimalSeparator="," />

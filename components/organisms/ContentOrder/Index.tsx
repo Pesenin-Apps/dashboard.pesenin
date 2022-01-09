@@ -33,7 +33,7 @@ export default function ContentOrder() {
             <Card key={order._id} data={order} />
           )) : (
             <div className="mt-5 text-center">
-              <h6 className="text-secondary">Data tidak ditemukan</h6>
+              <h6 className="text-secondary">Data Pesanan Belum Ada</h6>
             </div>
           )) : (
             <div className="text-center mt-5">
