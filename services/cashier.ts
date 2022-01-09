@@ -1,12 +1,21 @@
 import callAPI from '../config/api';
 
 const ROOT_API = process.env.NEXT_PUBLIC_API;
-const VERSION_API = 'api/v1';
+const VERSION_API = 'v1';
 
 /* ========= START TABLE ========= */
 
 export async function getTableSection() {
   const url = `${ROOT_API}/${VERSION_API}/tables/sections`;
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true,
+  });
+}
+
+export async function getTable() {
+  const url = `${ROOT_API}/${VERSION_API}/tables`;
   return callAPI({
     url,
     method: 'GET',
@@ -115,7 +124,7 @@ export async function getMenuCategories() {
 
 // Menu Type
 export async function getMenuTypes() {
-  const url = `${ROOT_API}/${VERSION_API}/products/types`;
+  const url = `${ROOT_API}/${VERSION_API}/products/types?belong=1`;
   return callAPI({
     url,
     method: 'GET',
@@ -210,6 +219,16 @@ export async function getOrder(id: string, token: string) {
 
 export async function updateOrder(id: string, data: any) {
   const url = `${ROOT_API}/${VERSION_API}/orders/${id}`;
+  return callAPI({
+    url,
+    method: 'PATCH',
+    token: true,
+    data,
+  });
+}
+
+export async function verifyReservation(id: string, data: any) {
+  const url = `${ROOT_API}/${VERSION_API}/orders/reservations/verify/${id}`;
   return callAPI({
     url,
     method: 'PATCH',

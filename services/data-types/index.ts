@@ -6,6 +6,7 @@ export interface MenuCategoryTypes {
 export interface MenuTypeTypes {
   _id: string;
   name: string;
+  // belong: number;
 }
 
 export interface MenuTypes {
@@ -29,10 +30,10 @@ export interface TableSectionTypes {
 
 export interface TableTypes {
   _id: string;
-  name: string;
+  status: number;
   number: number;
-  used: boolean;
   section: TableSectionTypes;
+  name: string;
 }
 
 export interface signInTypes {
@@ -46,10 +47,11 @@ export interface UserTypes {
   email: string;
   role: string;
   password: string;
+  phone: string;
   createdAt: string;
 }
 
-export interface CustomerTypes {
+export interface GuestTypes {
   _id: string;
   name: string;
   // eslint-disable-next-line camelcase
@@ -74,24 +76,41 @@ export interface OrderItemTypes {
   total: number;
 }
 
+export interface OrderReservation {
+  _id: string;
+  // eslint-disable-next-line camelcase
+  datetime_plan: string;
+  // eslint-disable-next-line camelcase
+  number_of_people: string;
+  status: number;
+  // eslint-disable-next-line camelcase
+  serving_type: number;
+  // eslint-disable-next-line camelcase
+  reservation_confirm: number;
+}
+
 export interface OrderTypes {
   _id: string;
   // eslint-disable-next-line camelcase
-  order_number: string;
+  is_paid: boolean;
   table: TableTypes;
   createdAt: string;
-  customer: CustomerTypes;
+  customer: UserTypes;
+  guest: GuestTypes;
   // eslint-disable-next-line camelcase
-  total_price: number;
+  order_items: [OrderItemTypes];
+  // eslint-disable-next-line camelcase
+  order_number: string;
+  status: number;
   tax: number;
   // eslint-disable-next-line camelcase
   total_overall: number;
-  status: number;
   // eslint-disable-next-line camelcase
-  order_items: [OrderItemTypes];
+  total_price: number;
+  type: number;
+  via: number;
   waiter: WaiterTypes;
-  // eslint-disable-next-line camelcase
-  is_paid: boolean;
+  reservation: OrderReservation;
 }
 
 export interface CountOrderTypes {

@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Navbar from '../../../components/organisms/Navbar';
+import NavbarCashier from '../../../components/organisms/Navbar/cashier';
 import Sidebar from '../../../components/organisms/Sidebar';
 import ContentTableDetail from '../../../components/organisms/ContentTableDetail';
 import { getOrdersCount, getTableDetail } from '../../../services/cashier';
@@ -24,7 +24,7 @@ export default function TableDetail(props: TableDetailProps) {
       name: '',
       code: '',
     },
-    used: false,
+    status: 1,
   });
 
   const getTableDetailAPI = useCallback(async (id) => {
@@ -43,7 +43,7 @@ export default function TableDetail(props: TableDetailProps) {
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <Navbar activeMenu="tables" />
+          <NavbarCashier activeMenu="tables" />
           <ContentTableDetail data={dataItem} />
         </div>
       </main>

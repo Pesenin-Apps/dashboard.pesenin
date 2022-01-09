@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import Sidebar from '../../../components/organisms/Sidebar';
-import Navbar from '../../../components/organisms/Navbar';
+import NavbarCashier from '../../../components/organisms/Navbar/cashier';
 import ContentTable from '../../../components/organisms/ContentTable';
 import { CountOrderTypes, TableSectionTypes, UserTypes } from '../../../services/data-types';
 import { getOrdersCount, getTableSection } from '../../../services/cashier';
@@ -18,7 +18,7 @@ export default function Tables(props: TablesProps) {
       <Sidebar userData={user} countData={counting} />
       <main className="main-wrapper">
         <div className="ps-lg-0">
-          <Navbar activeMenu="tables" />
+          <NavbarCashier activeMenu="tables" />
           <ContentTable data={dataTableSections} />
         </div>
       </main>

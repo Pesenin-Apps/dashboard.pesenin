@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import convertDate from '../../../config/convertdate';
 import { getOrders } from '../../../services/cashier';
 import { OrderTypes } from '../../../services/data-types';
 import ButtonPagination from '../../atoms/ButtonPagination';
@@ -16,7 +15,7 @@ export default function ContentHistory() {
 
   const params = {
     search,
-    limit: 12,
+    limit: 8,
     page,
     filters: {
       status: [3],
@@ -64,7 +63,7 @@ export default function ContentHistory() {
               </div>
 
               {histories.map((history: OrderTypes) => (
-                <Card key={history._id} id={history._id} time={convertDate(history.createdAt, 'dt')} orderNumber={history.order_number} tableSection={history.table.section.name} tableNumber={history.table.number.toString()} customerName={history.customer == null ? '-' : history.customer.name} paymentAmount={history.total_overall} />
+                <Card key={history._id} data={history} />
               ))}
 
               <div className="col-12 ps-15 pe-15 pb-lg-3 pb-4">
@@ -100,7 +99,7 @@ export default function ContentHistory() {
             </>
           ) : (
             <div className="mt-5 text-center">
-              <h6 className="text-secondary">Data tidak ditemukan</h6>
+              <h6 className="text-secondary">Data Riwayat Pesanan Belum Ada</h6>
             </div>
           )) : (
             <div className="text-center mt-5">

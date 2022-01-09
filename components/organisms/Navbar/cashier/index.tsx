@@ -1,10 +1,10 @@
 import Menu from './Menu';
 
-interface NavbarProps {
+interface NavbarCashierProps {
   activeMenu: 'orders' | 'histories' | 'tables' | 'menus' | 'waiters'
 }
 
-export default function Navbar(props: NavbarProps) {
+export default function NavbarCashier(props: NavbarCashierProps) {
   const { activeMenu } = props;
   return (
     <div className="d-flex justify-content-between mb-30">

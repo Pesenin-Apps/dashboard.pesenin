@@ -7,6 +7,14 @@ a.btn-icon:hover {
   color: #ffa700;
 }
 
+.bg-theme {
+  background-color: #ffa700;
+}
+
+.bg-theme-secondary {
+  background-color: #1abc9c;
+}
+
 .dashboard-container {
   background-color: #f2f2f3;
   min-height: 100vh;
