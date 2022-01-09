@@ -36,7 +36,7 @@ export default function ContentReservation() {
             <CardItem key={order._id} data={order} />
           )) : (
             <div className="mt-5 text-center">
-              <h6 className="text-secondary">Data tidak ditemukan</h6>
+              <h6 className="text-secondary">Belum Ada Reservasi</h6>
             </div>
           )) : (
             <div className="text-center mt-5">

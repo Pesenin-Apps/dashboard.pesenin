@@ -12,7 +12,7 @@ export default function CardItem(props: CardItemProps) {
 
   return (
     <div className="col-6">
-      <div className="order-card">
+      <div className="order-card h-100">
         <div className="d-flex justify-content-between mx-3 mb-3">
           <div className="row-6">
             <p className="text-md color-palette-0 fw-medium m-0">

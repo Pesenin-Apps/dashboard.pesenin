@@ -27,6 +27,11 @@ export const OrderItemStatus = {
   finish: 4,
 } as const;
 
+export const ReservationStatus = {
+  new: 1,
+  confirmed: 2,
+} as const;
+
 export const ReservationServingType = {
   ontime: 1,
   byconfirmation: 2,
