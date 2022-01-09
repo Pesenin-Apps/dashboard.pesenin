@@ -17,7 +17,7 @@ export default function Card(props: Partial<CardProps>) {
 
   return (
     <div className="col-3 ps-15 pe-15 pb-lg-3 pb-4">
-      <Link href={`cashier/orders/${data?._id}`}>
+      <Link href={`histories/${data?._id}`}>
         <a>
           <div className="order-card">
             <div className="d-flex mb-3">
