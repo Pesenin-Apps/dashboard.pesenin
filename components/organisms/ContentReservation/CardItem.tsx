@@ -11,17 +11,14 @@ export default function CardItem(props: CardItemProps) {
   const { data } = props;
 
   return (
-    <div className="col-6">
+    <div className="col-6 mb-3">
       <div className="order-card h-100">
         <div className="d-flex justify-content-between mx-3 mb-3">
           <div className="row-6">
             <p className="text-md color-palette-0 fw-medium m-0">
-              {data.table.section.name}
-              {' '}
+              {data.table === null ? 'Meja ' : data.table.section.name}
               <strong>
-                Nomor
-                {' '}
-                {data.table.number}
+                {data.table === null ? 'Menunggu' : ` No. ${data.table.number}`}
               </strong>
             </p>
             <p className="text-sm color-palette-5 m-0">
@@ -39,7 +36,7 @@ export default function CardItem(props: CardItemProps) {
             <p className="text-sm color-palette-5 mt-1">
               Dilayani Oleh
               {' '}
-              <b>{data.waiter.users.fullname}</b>
+              <b>{data.waiter === null ? 'Pelayan Belum Diinputkan' : data.waiter.users.fullname}</b>
             </p>
           </div>
           <div className="row-6">
@@ -77,7 +74,7 @@ export default function CardItem(props: CardItemProps) {
           </thead>
           <tbody>
             {data.order_items.map((orderItem: OrderItemTypes) => (
-              <TableRow key={orderItem._id} data={orderItem} />
+              <TableRow key={orderItem._id} data={orderItem} reservation={data.reservation} />
             ))}
           </tbody>
         </table>
