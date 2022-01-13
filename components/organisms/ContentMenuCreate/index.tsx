@@ -18,6 +18,8 @@ export default function ContentMenuCreate() {
   const [categoryOption, setCategoryOption] = useState([]);
   const [typeOption, setTypeOption] = useState([]);
 
+  const params = { };
+
   const router = useRouter();
 
   const updateFormatNumber = (val: string) => {
@@ -27,15 +29,15 @@ export default function ContentMenuCreate() {
     setPrice(x as unknown as string);
   };
 
-  const fetchAllData = useCallback(async () => {
+  const fetchAllData = useCallback(async (value) => {
     const getCategory = await getMenuCategories();
-    const getType = await getMenuTypes();
+    const getType = await getMenuTypes(value);
     setCategoryOption(getCategory.data.data);
     setTypeOption(getType.data.data);
   }, [getMenuCategories, getMenuTypes]);
 
   useEffect(() => {
-    fetchAllData();
+    fetchAllData(params);
   }, []);
 
   const onSubmit = async () => {
