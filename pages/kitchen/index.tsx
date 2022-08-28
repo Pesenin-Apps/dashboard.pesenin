@@ -59,8 +59,12 @@ export async function getServerSideProps({ req }: GetServerSideProps) {
     };
   }
 
+  const paramsProductType = {
+    belong: 1,
+  };
+
   const countOrders = await getOrdersCount(jwtToken);
-  const sections = await getMenuTypes();
+  const sections = await getMenuTypes(paramsProductType);
 
   return {
     props: {

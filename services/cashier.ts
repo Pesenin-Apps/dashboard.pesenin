@@ -123,12 +123,13 @@ export async function getMenuCategories() {
 }
 
 // Menu Type
-export async function getMenuTypes() {
-  const url = `${ROOT_API}/${VERSION_API}/products/types?belong=1`;
+export async function getMenuTypes(params: object) {
+  const url = `${ROOT_API}/${VERSION_API}/products/types`;
   return callAPI({
     url,
     method: 'GET',
     token: true,
+    params,
   });
 }
 
