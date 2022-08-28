@@ -34,6 +34,8 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
   });
   const [imagePreview, setImagePreview] = useState('/');
 
+  const params = { };
+
   const router = useRouter();
 
   const updateFormatNumber = (val: number) => {
@@ -47,15 +49,15 @@ export default function ContentMenuDetail(props: ContentMenuDetailProps) {
   const [categoryOption, setCategoryOption] = useState([]);
   const [typeOption, setTypeOption] = useState([]);
 
-  const fetchDataAPI = useCallback(async () => {
+  const fetchDataAPI = useCallback(async (value) => {
     const getCategory = await getMenuCategories();
-    const getType = await getMenuTypes();
+    const getType = await getMenuTypes(value);
     setCategoryOption(getCategory.data.data);
     setTypeOption(getType.data.data);
   }, [getMenuCategories, getMenuTypes]);
 
   useEffect(() => {
-    fetchDataAPI();
+    fetchDataAPI(params);
     setMenu(data);
   }, []);
 
